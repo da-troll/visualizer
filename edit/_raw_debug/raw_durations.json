@@ -1,13 +1,9 @@
 {
   "raw_files": [
     {
-      "file": "raw_01_db9fe03cea71aef4e8c6f520c5f7dda0.webm",
-      "error": "could not convert string to float: 'N/A'"
-    },
-    {
-      "file": "raw_02_e223e2b1169c1f17c056d48c2bad5f32.webm",
-      "duration_s": 51.44
+      "file": "raw_01_2649d2aac8c80d811f2fd88b64b9124d.webm",
+      "duration_s": 51.0
     }
   ],
-  "encoded_mp4_s": 88.68
+  "encoded_mp4_s": 51.0
 }

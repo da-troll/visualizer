@@ -1,1074 +1,1062 @@
 {
   "language_code": "eng",
-  "audio_duration_secs": 52.95,
-  "text": "Getting audio to look good usually means bouncing between players, plugins, and export tools. Visualizer keeps it in one place: drop in a track or open the mic, and it turns sound into motion across seven canvas2D modes.\n\nWhat makes it feel solid is that it\u2019s not just reacting to volume. Beat detection tracks spectral flux, the BPM readout settles into something usable, and the stem-band sliders let you decide whether the visuals should follow the sub, the bass, or the brighter stuff on top. Swap between eight palettes and the colour shifts ease over instead of snapping, so you can keep exploring without breaking the flow.\n\nIf you\u2019re working from files, it pulls in title, artist, and album art automatically. If you\u2019re performing live, the mic input has its own sensitivity control. And when something finally lands, you can grab a PNG or kick out a five-second 9:16 WebM loop in one click.\n\nSo instead of fiddling with setup, you get a visual that actually keeps up with the sound and is ready to share.",
-  "asr_text": "Getting audio to look good usually means bouncing between players, plugins, and export tools. Visualizer keeps it in one place. Drop in a track or open the mic, and it turns sound into motion across seven canvas 2D modes. What makes it feel solid is that it's not just reacting to volume. Beat detection tracks spectral flux. The BPM readout settles into something usable. And the stem band sliders let you decide whether the visuals should follow the sub, the bass, or the brighter stuff on top. Swap between eight palettes and the color shifts ease over instead of snapping, so you can keep exploring without breaking the flow. If you're working from files, it pulls in title, artist, and album art automatically. If you're performing live, the mic input has its own sensitivity control. And when something finally lands, you can grab a PNG or kick out a 5-second 916 WebM loop in one click. So instead of fiddling with setup, you get a visual that actually keeps up with the sound and is ready to share.",
+  "audio_duration_secs": 56.32,
+  "text": "Making audio feel alive usually means bouncing between clunky visualizer apps and export tools. Visualizer puts that in one standalone web app: drop in a track or open the mic, and it starts moving immediately.\n\nIt gives you seven canvas2D modes, from clean bars and waveform views to radial, spectrogram, constellation, and particles, so you can match the motion to the sound instead of settling for one look. Beat detection keeps it grounded with a live BPM readout, and the stem-band sliders let you decide whether the visuals should listen harder to the sub, bass, mids, or treble.\n\nA nice touch is how flexible it is once it\u2019s already working: ID3 tags and album art come through when you load a file, palettes shift smoothly instead of snapping, and fullscreen keeps the focus on the motion. When you\u2019ve got something worth keeping, it exports a PNG or a 5-second 9:16 WebM loop in one click.\n\nSo instead of just hearing a track, you can shape it into something visible, shareable, and ready to use.",
+  "asr_text": "Making audio feel alive usually means bouncing between clunky Visualizer apps and export tools. Visualizer puts that in one standalone web app. Dropping a track or open the mic, and it starts moving immediately. It gives you seven canvas 2D modes, from clean bars and waveform views, to radial, spectrogram, constellation, and particles, so you can match the motion to the sound instead of settling for one look. Beat detection keeps it grounded with a live BPM readout, and the stem band sweaters let you decide whether the visuals should listen harder to the sub, bass, mids, or treble. A nice touch is how flexible it is once it's already working. ID3 tags and album art come through when you load a file, palettes shift smoothly instead of snapping, and full screen keeps the focus on the motion. When you've got something worth keeping, it exports a PNG or a 5-second 916 WebM loop in one click. So instead of just hearing a track, you can shape it into something visible, shareable, and ready to use.",
   "words": [
     {
-      "text": "Getting",
-      "start": 0.252,
-      "end": 0.752,
+      "text": "Making",
+      "start": 0.245,
+      "end": 0.825,
       "type": "word"
     },
     {
       "text": "audio",
-      "start": 0.752,
-      "end": 1.172,
-      "type": "word"
-    },
-    {
-      "text": "to",
-      "start": 1.172,
-      "end": 1.412,
-      "type": "word"
-    },
-    {
-      "text": "look",
-      "start": 1.412,
-      "end": 1.592,
-      "type": "word"
-    },
-    {
-      "text": "good",
-      "start": 1.592,
-      "end": 1.852,
-      "type": "word"
-    },
-    {
-      "text": "usually",
-      "start": 1.852,
-      "end": 2.312,
-      "type": "word"
-    },
-    {
-      "text": "means",
-      "start": 2.312,
-      "end": 2.532,
-      "type": "word"
-    },
-    {
-      "text": "bouncing",
-      "start": 2.532,
-      "end": 2.892,
-      "type": "word"
-    },
-    {
-      "text": "between",
-      "start": 2.892,
-      "end": 3.292,
-      "type": "word"
-    },
-    {
-      "text": "players,",
-      "start": 3.292,
-      "end": 3.712,
-      "type": "word"
-    },
-    {
-      "text": "plugins,",
-      "start": 4.172,
-      "end": 4.332,
-      "type": "word"
-    },
-    {
-      "text": "and",
-      "start": 4.292,
-      "end": 4.552,
-      "type": "word"
-    },
-    {
-      "text": "export",
-      "start": 4.552,
-      "end": 4.752,
-      "type": "word"
-    },
-    {
-      "text": "tools.",
-      "start": 4.752,
-      "end": 5.072,
-      "type": "word"
-    },
-    {
-      "text": "Visualizer",
-      "start": 5.572,
-      "end": 6.052,
-      "type": "word"
-    },
-    {
-      "text": "keeps",
-      "start": 6.052,
-      "end": 6.292,
-      "type": "word"
-    },
-    {
-      "text": "it",
-      "start": 6.292,
-      "end": 6.452,
-      "type": "word"
-    },
-    {
-      "text": "in",
-      "start": 6.452,
-      "end": 6.612,
-      "type": "word"
-    },
-    {
-      "text": "one",
-      "start": 6.592,
-      "end": 6.772,
-      "type": "word"
-    },
-    {
-      "text": "place:",
-      "start": 6.772,
-      "end": 7.032,
-      "type": "word"
-    },
-    {
-      "text": "drop",
-      "start": 7.632,
-      "end": 7.792,
-      "type": "word"
-    },
-    {
-      "text": "in",
-      "start": 7.632,
-      "end": 7.792,
-      "type": "word"
-    },
-    {
-      "text": "a",
-      "start": 7.792,
-      "end": 8.132,
-      "type": "word"
-    },
-    {
-      "text": "track",
-      "start": 8.132,
-      "end": 8.292,
-      "type": "word"
-    },
-    {
-      "text": "or",
-      "start": 8.132,
-      "end": 8.352,
-      "type": "word"
-    },
-    {
-      "text": "open",
-      "start": 8.352,
-      "end": 8.532,
-      "type": "word"
-    },
-    {
-      "text": "the",
-      "start": 8.532,
-      "end": 8.912,
-      "type": "word"
-    },
-    {
-      "text": "mic,",
-      "start": 8.912,
-      "end": 9.072,
-      "type": "word"
-    },
-    {
-      "text": "and",
-      "start": 9.232,
-      "end": 9.392,
-      "type": "word"
-    },
-    {
-      "text": "it",
-      "start": 9.332,
-      "end": 9.492,
-      "type": "word"
-    },
-    {
-      "text": "turns",
-      "start": 9.492,
-      "end": 9.752,
-      "type": "word"
-    },
-    {
-      "text": "sound",
-      "start": 9.752,
-      "end": 10.092,
-      "type": "word"
-    },
-    {
-      "text": "into",
-      "start": 10.092,
-      "end": 10.412,
-      "type": "word"
-    },
-    {
-      "text": "motion",
-      "start": 10.412,
-      "end": 10.792,
-      "type": "word"
-    },
-    {
-      "text": "across",
-      "start": 10.792,
-      "end": 11.192,
-      "type": "word"
-    },
-    {
-      "text": "seven",
-      "start": 11.192,
-      "end": 11.592,
-      "type": "word"
-    },
-    {
-      "text": "canvas2D",
-      "start": 11.592,
-      "end": 12.292,
-      "type": "word"
-    },
-    {
-      "text": "modes.",
-      "start": 12.292,
-      "end": 12.612,
-      "type": "word"
-    },
-    {
-      "text": "What",
-      "start": 13.152,
-      "end": 13.312,
-      "type": "word"
-    },
-    {
-      "text": "makes",
-      "start": 13.292,
-      "end": 13.472,
-      "type": "word"
-    },
-    {
-      "text": "it",
-      "start": 13.472,
-      "end": 13.652,
+      "start": 0.825,
+      "end": 1.325,
       "type": "word"
     },
     {
       "text": "feel",
-      "start": 13.652,
-      "end": 13.932,
+      "start": 1.325,
+      "end": 1.665,
       "type": "word"
     },
     {
-      "text": "solid",
-      "start": 13.932,
-      "end": 14.172,
+      "text": "alive",
+      "start": 1.665,
+      "end": 2.205,
       "type": "word"
     },
     {
-      "text": "is",
-      "start": 14.172,
-      "end": 14.472,
+      "text": "usually",
+      "start": 2.205,
+      "end": 2.705,
       "type": "word"
     },
     {
-      "text": "that",
-      "start": 14.472,
-      "end": 14.632,
+      "text": "means",
+      "start": 2.705,
+      "end": 2.965,
       "type": "word"
     },
     {
-      "text": "it\u2019s",
-      "start": 14.592,
-      "end": 14.752,
-      "type": "word"
-    },
-    {
-      "text": "not",
-      "start": 14.752,
-      "end": 14.952,
-      "type": "word"
-    },
-    {
-      "text": "just",
-      "start": 14.952,
-      "end": 15.512,
-      "type": "word"
-    },
-    {
-      "text": "reacting",
-      "start": 15.512,
-      "end": 15.672,
-      "type": "word"
-    },
-    {
-      "text": "to",
-      "start": 15.512,
-      "end": 16.112,
-      "type": "word"
-    },
-    {
-      "text": "volume.",
-      "start": 16.112,
-      "end": 16.272,
-      "type": "word"
-    },
-    {
-      "text": "Beat",
-      "start": 16.672,
-      "end": 16.832,
-      "type": "word"
-    },
-    {
-      "text": "detection",
-      "start": 16.732,
-      "end": 17.132,
-      "type": "word"
-    },
-    {
-      "text": "tracks",
-      "start": 17.132,
-      "end": 17.532,
-      "type": "word"
-    },
-    {
-      "text": "spectral",
-      "start": 17.532,
-      "end": 17.892,
-      "type": "word"
-    },
-    {
-      "text": "flux,",
-      "start": 17.892,
-      "end": 18.172,
-      "type": "word"
-    },
-    {
-      "text": "the",
-      "start": 18.552,
-      "end": 18.712,
-      "type": "word"
-    },
-    {
-      "text": "BPM",
-      "start": 18.632,
-      "end": 19.052,
-      "type": "word"
-    },
-    {
-      "text": "readout",
-      "start": 19.052,
-      "end": 19.452,
-      "type": "word"
-    },
-    {
-      "text": "settles",
-      "start": 19.452,
-      "end": 19.672,
-      "type": "word"
-    },
-    {
-      "text": "into",
-      "start": 19.672,
-      "end": 19.912,
-      "type": "word"
-    },
-    {
-      "text": "something",
-      "start": 19.912,
-      "end": 20.232,
-      "type": "word"
-    },
-    {
-      "text": "usable,",
-      "start": 20.232,
-      "end": 20.572,
-      "type": "word"
-    },
-    {
-      "text": "and",
-      "start": 20.952,
-      "end": 21.152,
-      "type": "word"
-    },
-    {
-      "text": "the",
-      "start": 21.152,
-      "end": 21.332,
-      "type": "word"
-    },
-    {
-      "text": "stem-band",
-      "start": 21.332,
-      "end": 21.772,
-      "type": "word"
-    },
-    {
-      "text": "sliders",
-      "start": 21.772,
-      "end": 22.072,
-      "type": "word"
-    },
-    {
-      "text": "let",
-      "start": 22.072,
-      "end": 22.312,
-      "type": "word"
-    },
-    {
-      "text": "you",
-      "start": 22.312,
-      "end": 22.492,
-      "type": "word"
-    },
-    {
-      "text": "decide",
-      "start": 22.492,
-      "end": 22.752,
-      "type": "word"
-    },
-    {
-      "text": "whether",
-      "start": 22.752,
-      "end": 22.972,
-      "type": "word"
-    },
-    {
-      "text": "the",
-      "start": 22.972,
-      "end": 23.212,
-      "type": "word"
-    },
-    {
-      "text": "visuals",
-      "start": 23.212,
-      "end": 23.492,
-      "type": "word"
-    },
-    {
-      "text": "should",
-      "start": 23.492,
-      "end": 23.752,
-      "type": "word"
-    },
-    {
-      "text": "follow",
-      "start": 23.752,
-      "end": 23.912,
-      "type": "word"
-    },
-    {
-      "text": "the",
-      "start": 23.892,
-      "end": 24.132,
-      "type": "word"
-    },
-    {
-      "text": "sub,",
-      "start": 24.132,
-      "end": 24.352,
-      "type": "word"
-    },
-    {
-      "text": "the",
-      "start": 24.712,
-      "end": 25.072,
-      "type": "word"
-    },
-    {
-      "text": "bass,",
-      "start": 25.072,
-      "end": 25.232,
-      "type": "word"
-    },
-    {
-      "text": "or",
-      "start": 25.232,
-      "end": 25.392,
-      "type": "word"
-    },
-    {
-      "text": "the",
-      "start": 25.372,
-      "end": 25.732,
-      "type": "word"
-    },
-    {
-      "text": "brighter",
-      "start": 25.732,
-      "end": 25.892,
-      "type": "word"
-    },
-    {
-      "text": "stuff",
-      "start": 25.732,
-      "end": 26.012,
-      "type": "word"
-    },
-    {
-      "text": "on",
-      "start": 26.012,
-      "end": 26.252,
-      "type": "word"
-    },
-    {
-      "text": "top.",
-      "start": 26.252,
-      "end": 26.452,
-      "type": "word"
-    },
-    {
-      "text": "Swap",
-      "start": 26.452,
-      "end": 27.172,
+      "text": "bouncing",
+      "start": 2.965,
+      "end": 3.325,
       "type": "word"
     },
     {
       "text": "between",
-      "start": 27.172,
-      "end": 27.512,
+      "start": 3.325,
+      "end": 3.825,
       "type": "word"
     },
     {
-      "text": "eight",
-      "start": 27.512,
-      "end": 27.832,
+      "text": "clunky",
+      "start": 3.825,
+      "end": 4.185,
       "type": "word"
     },
     {
-      "text": "palettes",
-      "start": 27.832,
-      "end": 28.172,
+      "text": "visualizer",
+      "start": 4.185,
+      "end": 4.725,
       "type": "word"
     },
     {
-      "text": "and",
-      "start": 28.172,
-      "end": 28.412,
-      "type": "word"
-    },
-    {
-      "text": "the",
-      "start": 28.412,
-      "end": 28.612,
-      "type": "word"
-    },
-    {
-      "text": "colour",
-      "start": 28.612,
-      "end": 28.852,
-      "type": "word"
-    },
-    {
-      "text": "shifts",
-      "start": 28.852,
-      "end": 29.052,
-      "type": "word"
-    },
-    {
-      "text": "ease",
-      "start": 29.052,
-      "end": 29.452,
-      "type": "word"
-    },
-    {
-      "text": "over",
-      "start": 29.452,
-      "end": 29.772,
-      "type": "word"
-    },
-    {
-      "text": "instead",
-      "start": 29.772,
-      "end": 30.032,
-      "type": "word"
-    },
-    {
-      "text": "of",
-      "start": 30.032,
-      "end": 30.232,
-      "type": "word"
-    },
-    {
-      "text": "snapping,",
-      "start": 30.232,
-      "end": 30.492,
-      "type": "word"
-    },
-    {
-      "text": "so",
-      "start": 30.932,
-      "end": 31.092,
-      "type": "word"
-    },
-    {
-      "text": "you",
-      "start": 31.012,
-      "end": 31.172,
-      "type": "word"
-    },
-    {
-      "text": "can",
-      "start": 31.112,
-      "end": 31.292,
-      "type": "word"
-    },
-    {
-      "text": "keep",
-      "start": 31.292,
-      "end": 31.532,
-      "type": "word"
-    },
-    {
-      "text": "exploring",
-      "start": 31.532,
-      "end": 31.872,
-      "type": "word"
-    },
-    {
-      "text": "without",
-      "start": 31.872,
-      "end": 32.232,
-      "type": "word"
-    },
-    {
-      "text": "breaking",
-      "start": 32.232,
-      "end": 32.472,
-      "type": "word"
-    },
-    {
-      "text": "the",
-      "start": 32.472,
-      "end": 32.912,
-      "type": "word"
-    },
-    {
-      "text": "flow.",
-      "start": 32.912,
-      "end": 33.072,
-      "type": "word"
-    },
-    {
-      "text": "If",
-      "start": 33.452,
-      "end": 33.612,
-      "type": "word"
-    },
-    {
-      "text": "you\u2019re",
-      "start": 33.552,
-      "end": 33.912,
-      "type": "word"
-    },
-    {
-      "text": "working",
-      "start": 33.912,
-      "end": 34.072,
-      "type": "word"
-    },
-    {
-      "text": "from",
-      "start": 33.912,
-      "end": 34.192,
-      "type": "word"
-    },
-    {
-      "text": "files,",
-      "start": 34.192,
-      "end": 34.472,
-      "type": "word"
-    },
-    {
-      "text": "it",
-      "start": 34.692,
-      "end": 34.852,
-      "type": "word"
-    },
-    {
-      "text": "pulls",
-      "start": 34.772,
-      "end": 34.952,
-      "type": "word"
-    },
-    {
-      "text": "in",
-      "start": 34.952,
-      "end": 35.192,
-      "type": "word"
-    },
-    {
-      "text": "title,",
-      "start": 35.192,
-      "end": 35.452,
-      "type": "word"
-    },
-    {
-      "text": "artist,",
-      "start": 35.972,
-      "end": 36.132,
+      "text": "apps",
+      "start": 4.725,
+      "end": 5.105,
       "type": "word"
     },
     {
       "text": "and",
-      "start": 36.112,
-      "end": 36.312,
+      "start": 5.105,
+      "end": 5.385,
       "type": "word"
     },
     {
-      "text": "album",
-      "start": 36.312,
-      "end": 36.472,
+      "text": "export",
+      "start": 5.385,
+      "end": 5.705,
       "type": "word"
     },
     {
-      "text": "art",
-      "start": 36.452,
-      "end": 36.672,
+      "text": "tools.",
+      "start": 5.705,
+      "end": 6.045,
       "type": "word"
     },
     {
-      "text": "automatically.",
-      "start": 36.672,
-      "end": 37.112,
+      "text": "Visualizer",
+      "start": 6.565,
+      "end": 7.065,
       "type": "word"
     },
     {
-      "text": "If",
-      "start": 37.632,
-      "end": 37.792,
-      "type": "word"
-    },
-    {
-      "text": "you\u2019re",
-      "start": 37.752,
-      "end": 37.932,
-      "type": "word"
-    },
-    {
-      "text": "performing",
-      "start": 37.932,
-      "end": 38.192,
-      "type": "word"
-    },
-    {
-      "text": "live,",
-      "start": 38.192,
-      "end": 38.572,
-      "type": "word"
-    },
-    {
-      "text": "the",
-      "start": 38.912,
-      "end": 39.112,
-      "type": "word"
-    },
-    {
-      "text": "mic",
-      "start": 39.112,
-      "end": 39.272,
-      "type": "word"
-    },
-    {
-      "text": "input",
-      "start": 39.212,
-      "end": 39.492,
-      "type": "word"
-    },
-    {
-      "text": "has",
-      "start": 39.492,
-      "end": 39.712,
-      "type": "word"
-    },
-    {
-      "text": "its",
-      "start": 39.712,
-      "end": 39.872,
-      "type": "word"
-    },
-    {
-      "text": "own",
-      "start": 39.872,
-      "end": 40.092,
-      "type": "word"
-    },
-    {
-      "text": "sensitivity",
-      "start": 40.092,
-      "end": 40.432,
-      "type": "word"
-    },
-    {
-      "text": "control.",
-      "start": 40.432,
-      "end": 40.872,
-      "type": "word"
-    },
-    {
-      "text": "And",
-      "start": 41.212,
-      "end": 41.432,
-      "type": "word"
-    },
-    {
-      "text": "when",
-      "start": 41.432,
-      "end": 41.592,
-      "type": "word"
-    },
-    {
-      "text": "something",
-      "start": 41.592,
-      "end": 41.892,
-      "type": "word"
-    },
-    {
-      "text": "finally",
-      "start": 41.892,
-      "end": 42.372,
-      "type": "word"
-    },
-    {
-      "text": "lands,",
-      "start": 42.372,
-      "end": 42.632,
-      "type": "word"
-    },
-    {
-      "text": "you",
-      "start": 43.052,
-      "end": 43.212,
-      "type": "word"
-    },
-    {
-      "text": "can",
-      "start": 43.092,
-      "end": 43.292,
-      "type": "word"
-    },
-    {
-      "text": "grab",
-      "start": 43.292,
-      "end": 43.452,
-      "type": "word"
-    },
-    {
-      "text": "a",
-      "start": 43.392,
-      "end": 43.672,
-      "type": "word"
-    },
-    {
-      "text": "PNG",
-      "start": 43.672,
-      "end": 43.912,
-      "type": "word"
-    },
-    {
-      "text": "or",
-      "start": 43.912,
-      "end": 44.352,
-      "type": "word"
-    },
-    {
-      "text": "kick",
-      "start": 44.352,
-      "end": 44.532,
-      "type": "word"
-    },
-    {
-      "text": "out",
-      "start": 44.532,
-      "end": 44.732,
-      "type": "word"
-    },
-    {
-      "text": "a",
-      "start": 44.972,
-      "end": 45.192,
-      "type": "word"
-    },
-    {
-      "text": "five-second",
-      "start": 45.192,
-      "end": 45.452,
-      "type": "word"
-    },
-    {
-      "text": "9:16",
-      "start": 45.452,
-      "end": 46.192,
-      "type": "word"
-    },
-    {
-      "text": "WebM",
-      "start": 46.192,
-      "end": 46.572,
-      "type": "word"
-    },
-    {
-      "text": "loop",
-      "start": 46.572,
-      "end": 46.792,
-      "type": "word"
-    },
-    {
-      "text": "in",
-      "start": 46.792,
-      "end": 47.072,
-      "type": "word"
-    },
-    {
-      "text": "one",
-      "start": 47.072,
-      "end": 47.252,
-      "type": "word"
-    },
-    {
-      "text": "click.",
-      "start": 47.252,
-      "end": 47.472,
-      "type": "word"
-    },
-    {
-      "text": "So",
-      "start": 47.752,
-      "end": 48.232,
-      "type": "word"
-    },
-    {
-      "text": "instead",
-      "start": 48.232,
-      "end": 48.412,
-      "type": "word"
-    },
-    {
-      "text": "of",
-      "start": 48.412,
-      "end": 48.792,
-      "type": "word"
-    },
-    {
-      "text": "fiddling",
-      "start": 48.792,
-      "end": 48.952,
-      "type": "word"
-    },
-    {
-      "text": "with",
-      "start": 48.832,
-      "end": 49.172,
-      "type": "word"
-    },
-    {
-      "text": "setup,",
-      "start": 49.172,
-      "end": 49.352,
-      "type": "word"
-    },
-    {
-      "text": "you",
-      "start": 49.732,
-      "end": 49.892,
-      "type": "word"
-    },
-    {
-      "text": "get",
-      "start": 49.832,
-      "end": 49.992,
-      "type": "word"
-    },
-    {
-      "text": "a",
-      "start": 49.952,
-      "end": 50.152,
-      "type": "word"
-    },
-    {
-      "text": "visual",
-      "start": 50.152,
-      "end": 50.312,
+      "text": "puts",
+      "start": 7.065,
+      "end": 7.305,
       "type": "word"
     },
     {
       "text": "that",
-      "start": 50.292,
-      "end": 50.572,
+      "start": 7.305,
+      "end": 7.545,
       "type": "word"
     },
     {
-      "text": "actually",
-      "start": 50.572,
-      "end": 51.012,
+      "text": "in",
+      "start": 7.545,
+      "end": 7.765,
       "type": "word"
     },
     {
-      "text": "keeps",
-      "start": 51.012,
-      "end": 51.232,
+      "text": "one",
+      "start": 7.765,
+      "end": 8.085,
       "type": "word"
     },
     {
-      "text": "up",
-      "start": 51.232,
-      "end": 51.412,
+      "text": "standalone",
+      "start": 8.085,
+      "end": 8.605,
       "type": "word"
     },
     {
-      "text": "with",
-      "start": 51.412,
-      "end": 51.572,
+      "text": "web",
+      "start": 8.605,
+      "end": 8.865,
+      "type": "word"
+    },
+    {
+      "text": "app:",
+      "start": 8.865,
+      "end": 9.065,
+      "type": "word"
+    },
+    {
+      "text": "drop",
+      "start": 9.065,
+      "end": 9.492,
+      "type": "word"
+    },
+    {
+      "text": "in",
+      "start": 9.492,
+      "end": 9.705,
+      "type": "word"
+    },
+    {
+      "text": "a",
+      "start": 9.705,
+      "end": 10.205,
+      "type": "word"
+    },
+    {
+      "text": "track",
+      "start": 10.205,
+      "end": 10.365,
+      "type": "word"
+    },
+    {
+      "text": "or",
+      "start": 10.205,
+      "end": 10.505,
+      "type": "word"
+    },
+    {
+      "text": "open",
+      "start": 10.505,
+      "end": 10.765,
       "type": "word"
     },
     {
       "text": "the",
-      "start": 51.512,
-      "end": 51.792,
+      "start": 10.765,
+      "end": 11.105,
       "type": "word"
     },
     {
-      "text": "sound",
-      "start": 51.792,
-      "end": 51.952,
+      "text": "mic,",
+      "start": 11.105,
+      "end": 11.265,
       "type": "word"
     },
     {
       "text": "and",
-      "start": 51.952,
-      "end": 52.212,
+      "start": 11.365,
+      "end": 11.525,
       "type": "word"
     },
     {
-      "text": "is",
-      "start": 52.212,
-      "end": 52.412,
+      "text": "it",
+      "start": 11.445,
+      "end": 11.665,
       "type": "word"
     },
     {
-      "text": "ready",
-      "start": 52.412,
-      "end": 52.572,
+      "text": "starts",
+      "start": 11.665,
+      "end": 11.865,
+      "type": "word"
+    },
+    {
+      "text": "moving",
+      "start": 11.865,
+      "end": 12.245,
+      "type": "word"
+    },
+    {
+      "text": "immediately.",
+      "start": 12.245,
+      "end": 12.785,
+      "type": "word"
+    },
+    {
+      "text": "It",
+      "start": 13.445,
+      "end": 13.605,
+      "type": "word"
+    },
+    {
+      "text": "gives",
+      "start": 13.525,
+      "end": 13.685,
+      "type": "word"
+    },
+    {
+      "text": "you",
+      "start": 13.685,
+      "end": 13.985,
+      "type": "word"
+    },
+    {
+      "text": "seven",
+      "start": 13.985,
+      "end": 14.245,
+      "type": "word"
+    },
+    {
+      "text": "canvas2D",
+      "start": 14.245,
+      "end": 15.025,
+      "type": "word"
+    },
+    {
+      "text": "modes,",
+      "start": 15.025,
+      "end": 15.305,
+      "type": "word"
+    },
+    {
+      "text": "from",
+      "start": 15.785,
+      "end": 15.945,
+      "type": "word"
+    },
+    {
+      "text": "clean",
+      "start": 15.805,
+      "end": 16.165,
+      "type": "word"
+    },
+    {
+      "text": "bars",
+      "start": 16.165,
+      "end": 16.425,
+      "type": "word"
+    },
+    {
+      "text": "and",
+      "start": 16.425,
+      "end": 16.685,
+      "type": "word"
+    },
+    {
+      "text": "waveform",
+      "start": 16.685,
+      "end": 17.005,
+      "type": "word"
+    },
+    {
+      "text": "views",
+      "start": 17.005,
+      "end": 17.345,
       "type": "word"
     },
     {
       "text": "to",
-      "start": 52.492,
-      "end": 52.852,
+      "start": 17.705,
+      "end": 17.865,
       "type": "word"
     },
     {
-      "text": "share.",
-      "start": 52.852,
-      "end": 52.95,
+      "text": "radial,",
+      "start": 17.865,
+      "end": 18.145,
+      "type": "word"
+    },
+    {
+      "text": "spectrogram,",
+      "start": 18.565,
+      "end": 18.905,
+      "type": "word"
+    },
+    {
+      "text": "constellation,",
+      "start": 19.685,
+      "end": 19.845,
+      "type": "word"
+    },
+    {
+      "text": "and",
+      "start": 19.825,
+      "end": 20.485,
+      "type": "word"
+    },
+    {
+      "text": "particles,",
+      "start": 20.485,
+      "end": 20.645,
+      "type": "word"
+    },
+    {
+      "text": "so",
+      "start": 20.605,
+      "end": 20.985,
+      "type": "word"
+    },
+    {
+      "text": "you",
+      "start": 20.985,
+      "end": 21.145,
+      "type": "word"
+    },
+    {
+      "text": "can",
+      "start": 21.145,
+      "end": 21.385,
+      "type": "word"
+    },
+    {
+      "text": "match",
+      "start": 21.385,
+      "end": 21.545,
+      "type": "word"
+    },
+    {
+      "text": "the",
+      "start": 21.525,
+      "end": 21.965,
+      "type": "word"
+    },
+    {
+      "text": "motion",
+      "start": 21.965,
+      "end": 22.125,
+      "type": "word"
+    },
+    {
+      "text": "to",
+      "start": 21.965,
+      "end": 22.145,
+      "type": "word"
+    },
+    {
+      "text": "the",
+      "start": 22.145,
+      "end": 22.645,
+      "type": "word"
+    },
+    {
+      "text": "sound",
+      "start": 22.645,
+      "end": 22.805,
+      "type": "word"
+    },
+    {
+      "text": "instead",
+      "start": 22.645,
+      "end": 22.965,
+      "type": "word"
+    },
+    {
+      "text": "of",
+      "start": 22.965,
+      "end": 23.385,
+      "type": "word"
+    },
+    {
+      "text": "settling",
+      "start": 23.385,
+      "end": 23.545,
+      "type": "word"
+    },
+    {
+      "text": "for",
+      "start": 23.385,
+      "end": 23.705,
+      "type": "word"
+    },
+    {
+      "text": "one",
+      "start": 23.705,
+      "end": 23.905,
+      "type": "word"
+    },
+    {
+      "text": "look.",
+      "start": 23.905,
+      "end": 24.185,
+      "type": "word"
+    },
+    {
+      "text": "Beat",
+      "start": 24.785,
+      "end": 24.945,
+      "type": "word"
+    },
+    {
+      "text": "detection",
+      "start": 24.905,
+      "end": 25.265,
+      "type": "word"
+    },
+    {
+      "text": "keeps",
+      "start": 25.265,
+      "end": 25.605,
+      "type": "word"
+    },
+    {
+      "text": "it",
+      "start": 25.605,
+      "end": 25.965,
+      "type": "word"
+    },
+    {
+      "text": "grounded",
+      "start": 25.965,
+      "end": 26.125,
+      "type": "word"
+    },
+    {
+      "text": "with",
+      "start": 26.005,
+      "end": 26.305,
+      "type": "word"
+    },
+    {
+      "text": "a",
+      "start": 26.305,
+      "end": 26.485,
+      "type": "word"
+    },
+    {
+      "text": "live",
+      "start": 26.485,
+      "end": 26.725,
+      "type": "word"
+    },
+    {
+      "text": "BPM",
+      "start": 26.725,
+      "end": 27.145,
+      "type": "word"
+    },
+    {
+      "text": "readout,",
+      "start": 27.145,
+      "end": 27.565,
+      "type": "word"
+    },
+    {
+      "text": "and",
+      "start": 27.565,
+      "end": 27.985,
+      "type": "word"
+    },
+    {
+      "text": "the",
+      "start": 27.985,
+      "end": 28.165,
+      "type": "word"
+    },
+    {
+      "text": "stem-band",
+      "start": 28.165,
+      "end": 28.57,
+      "type": "word"
+    },
+    {
+      "text": "sliders",
+      "start": 28.57,
+      "end": 28.885,
+      "type": "word"
+    },
+    {
+      "text": "let",
+      "start": 28.885,
+      "end": 29.145,
+      "type": "word"
+    },
+    {
+      "text": "you",
+      "start": 29.145,
+      "end": 29.325,
+      "type": "word"
+    },
+    {
+      "text": "decide",
+      "start": 29.325,
+      "end": 29.625,
+      "type": "word"
+    },
+    {
+      "text": "whether",
+      "start": 29.625,
+      "end": 29.845,
+      "type": "word"
+    },
+    {
+      "text": "the",
+      "start": 29.845,
+      "end": 30.065,
+      "type": "word"
+    },
+    {
+      "text": "visuals",
+      "start": 30.065,
+      "end": 30.345,
+      "type": "word"
+    },
+    {
+      "text": "should",
+      "start": 30.345,
+      "end": 30.585,
+      "type": "word"
+    },
+    {
+      "text": "listen",
+      "start": 30.585,
+      "end": 30.785,
+      "type": "word"
+    },
+    {
+      "text": "harder",
+      "start": 30.785,
+      "end": 31.085,
+      "type": "word"
+    },
+    {
+      "text": "to",
+      "start": 31.085,
+      "end": 31.285,
+      "type": "word"
+    },
+    {
+      "text": "the",
+      "start": 31.285,
+      "end": 31.485,
+      "type": "word"
+    },
+    {
+      "text": "sub,",
+      "start": 31.485,
+      "end": 31.705,
+      "type": "word"
+    },
+    {
+      "text": "bass,",
+      "start": 32.425,
+      "end": 32.585,
+      "type": "word"
+    },
+    {
+      "text": "mids,",
+      "start": 32.845,
+      "end": 33.005,
+      "type": "word"
+    },
+    {
+      "text": "or",
+      "start": 33.025,
+      "end": 33.305,
+      "type": "word"
+    },
+    {
+      "text": "treble.",
+      "start": 33.305,
+      "end": 33.505,
+      "type": "word"
+    },
+    {
+      "text": "A",
+      "start": 33.965,
+      "end": 34.125,
+      "type": "word"
+    },
+    {
+      "text": "nice",
+      "start": 34.085,
+      "end": 34.305,
+      "type": "word"
+    },
+    {
+      "text": "touch",
+      "start": 34.305,
+      "end": 34.525,
+      "type": "word"
+    },
+    {
+      "text": "is",
+      "start": 34.525,
+      "end": 34.685,
+      "type": "word"
+    },
+    {
+      "text": "how",
+      "start": 34.685,
+      "end": 34.905,
+      "type": "word"
+    },
+    {
+      "text": "flexible",
+      "start": 34.905,
+      "end": 35.245,
+      "type": "word"
+    },
+    {
+      "text": "it",
+      "start": 35.245,
+      "end": 35.425,
+      "type": "word"
+    },
+    {
+      "text": "is",
+      "start": 35.425,
+      "end": 35.645,
+      "type": "word"
+    },
+    {
+      "text": "once",
+      "start": 35.645,
+      "end": 35.825,
+      "type": "word"
+    },
+    {
+      "text": "it\u2019s",
+      "start": 35.825,
+      "end": 35.985,
+      "type": "word"
+    },
+    {
+      "text": "already",
+      "start": 35.985,
+      "end": 36.305,
+      "type": "word"
+    },
+    {
+      "text": "working:",
+      "start": 36.305,
+      "end": 36.585,
+      "type": "word"
+    },
+    {
+      "text": "ID3",
+      "start": 37.205,
+      "end": 37.585,
+      "type": "word"
+    },
+    {
+      "text": "tags",
+      "start": 37.585,
+      "end": 37.865,
+      "type": "word"
+    },
+    {
+      "text": "and",
+      "start": 37.865,
+      "end": 38.045,
+      "type": "word"
+    },
+    {
+      "text": "album",
+      "start": 38.045,
+      "end": 38.305,
+      "type": "word"
+    },
+    {
+      "text": "art",
+      "start": 38.305,
+      "end": 38.465,
+      "type": "word"
+    },
+    {
+      "text": "come",
+      "start": 38.465,
+      "end": 38.705,
+      "type": "word"
+    },
+    {
+      "text": "through",
+      "start": 38.705,
+      "end": 38.905,
+      "type": "word"
+    },
+    {
+      "text": "when",
+      "start": 38.905,
+      "end": 39.085,
+      "type": "word"
+    },
+    {
+      "text": "you",
+      "start": 39.085,
+      "end": 39.265,
+      "type": "word"
+    },
+    {
+      "text": "load",
+      "start": 39.265,
+      "end": 39.425,
+      "type": "word"
+    },
+    {
+      "text": "a",
+      "start": 39.305,
+      "end": 39.725,
+      "type": "word"
+    },
+    {
+      "text": "file,",
+      "start": 39.725,
+      "end": 39.885,
+      "type": "word"
+    },
+    {
+      "text": "palettes",
+      "start": 40.385,
+      "end": 40.545,
+      "type": "word"
+    },
+    {
+      "text": "shift",
+      "start": 40.385,
+      "end": 40.745,
+      "type": "word"
+    },
+    {
+      "text": "smoothly",
+      "start": 40.745,
+      "end": 41.185,
+      "type": "word"
+    },
+    {
+      "text": "instead",
+      "start": 41.185,
+      "end": 41.505,
+      "type": "word"
+    },
+    {
+      "text": "of",
+      "start": 41.505,
+      "end": 41.705,
+      "type": "word"
+    },
+    {
+      "text": "snapping,",
+      "start": 41.705,
+      "end": 41.965,
+      "type": "word"
+    },
+    {
+      "text": "and",
+      "start": 42.365,
+      "end": 42.605,
+      "type": "word"
+    },
+    {
+      "text": "fullscreen",
+      "start": 42.605,
+      "end": 42.985,
+      "type": "word"
+    },
+    {
+      "text": "keeps",
+      "start": 42.985,
+      "end": 43.265,
+      "type": "word"
+    },
+    {
+      "text": "the",
+      "start": 43.265,
+      "end": 43.525,
+      "type": "word"
+    },
+    {
+      "text": "focus",
+      "start": 43.525,
+      "end": 43.765,
+      "type": "word"
+    },
+    {
+      "text": "on",
+      "start": 43.765,
+      "end": 44.025,
+      "type": "word"
+    },
+    {
+      "text": "the",
+      "start": 44.025,
+      "end": 44.185,
+      "type": "word"
+    },
+    {
+      "text": "motion.",
+      "start": 44.145,
+      "end": 44.445,
+      "type": "word"
+    },
+    {
+      "text": "When",
+      "start": 44.865,
+      "end": 45.045,
+      "type": "word"
+    },
+    {
+      "text": "you\u2019ve",
+      "start": 45.045,
+      "end": 45.205,
+      "type": "word"
+    },
+    {
+      "text": "got",
+      "start": 45.205,
+      "end": 45.385,
+      "type": "word"
+    },
+    {
+      "text": "something",
+      "start": 45.385,
+      "end": 45.645,
+      "type": "word"
+    },
+    {
+      "text": "worth",
+      "start": 45.645,
+      "end": 45.885,
+      "type": "word"
+    },
+    {
+      "text": "keeping,",
+      "start": 45.885,
+      "end": 46.145,
+      "type": "word"
+    },
+    {
+      "text": "it",
+      "start": 46.425,
+      "end": 46.585,
+      "type": "word"
+    },
+    {
+      "text": "exports",
+      "start": 46.545,
+      "end": 46.885,
+      "type": "word"
+    },
+    {
+      "text": "a",
+      "start": 46.885,
+      "end": 47.225,
+      "type": "word"
+    },
+    {
+      "text": "PNG",
+      "start": 47.225,
+      "end": 47.465,
+      "type": "word"
+    },
+    {
+      "text": "or",
+      "start": 47.465,
+      "end": 47.905,
+      "type": "word"
+    },
+    {
+      "text": "a",
+      "start": 48.145,
+      "end": 48.365,
+      "type": "word"
+    },
+    {
+      "text": "5-second",
+      "start": 48.365,
+      "end": 48.605,
+      "type": "word"
+    },
+    {
+      "text": "9:16",
+      "start": 48.605,
+      "end": 49.365,
+      "type": "word"
+    },
+    {
+      "text": "WebM",
+      "start": 49.365,
+      "end": 49.765,
+      "type": "word"
+    },
+    {
+      "text": "loop",
+      "start": 49.765,
+      "end": 50.005,
+      "type": "word"
+    },
+    {
+      "text": "in",
+      "start": 50.005,
+      "end": 50.265,
+      "type": "word"
+    },
+    {
+      "text": "one",
+      "start": 50.265,
+      "end": 50.485,
+      "type": "word"
+    },
+    {
+      "text": "click.",
+      "start": 50.485,
+      "end": 50.685,
+      "type": "word"
+    },
+    {
+      "text": "So",
+      "start": 51.105,
+      "end": 51.585,
+      "type": "word"
+    },
+    {
+      "text": "instead",
+      "start": 51.585,
+      "end": 51.745,
+      "type": "word"
+    },
+    {
+      "text": "of",
+      "start": 51.665,
+      "end": 51.885,
+      "type": "word"
+    },
+    {
+      "text": "just",
+      "start": 51.885,
+      "end": 52.145,
+      "type": "word"
+    },
+    {
+      "text": "hearing",
+      "start": 52.145,
+      "end": 52.325,
+      "type": "word"
+    },
+    {
+      "text": "a",
+      "start": 52.325,
+      "end": 52.705,
+      "type": "word"
+    },
+    {
+      "text": "track,",
+      "start": 52.705,
+      "end": 52.865,
+      "type": "word"
+    },
+    {
+      "text": "you",
+      "start": 53.025,
+      "end": 53.185,
+      "type": "word"
+    },
+    {
+      "text": "can",
+      "start": 53.125,
+      "end": 53.365,
+      "type": "word"
+    },
+    {
+      "text": "shape",
+      "start": 53.365,
+      "end": 53.525,
+      "type": "word"
+    },
+    {
+      "text": "it",
+      "start": 53.505,
+      "end": 53.665,
+      "type": "word"
+    },
+    {
+      "text": "into",
+      "start": 53.665,
+      "end": 53.865,
+      "type": "word"
+    },
+    {
+      "text": "something",
+      "start": 53.865,
+      "end": 54.165,
+      "type": "word"
+    },
+    {
+      "text": "visible,",
+      "start": 54.165,
+      "end": 54.565,
+      "type": "word"
+    },
+    {
+      "text": "shareable,",
+      "start": 54.985,
+      "end": 55.245,
+      "type": "word"
+    },
+    {
+      "text": "and",
+      "start": 55.285,
+      "end": 55.685,
+      "type": "word"
+    },
+    {
+      "text": "ready",
+      "start": 55.685,
+      "end": 55.845,
+      "type": "word"
+    },
+    {
+      "text": "to",
+      "start": 55.745,
+      "end": 55.985,
+      "type": "word"
+    },
+    {
+      "text": "use.",
+      "start": 55.985,
+      "end": 56.245,
       "type": "word"
     }
   ],
   "alignment_meta": {
-    "asr_word_count": 179,
-    "script_word_count": 176,
+    "asr_word_count": 177,
+    "script_word_count": 174,
     "fallback_used": false,
-    "drift_s": 0.0,
-    "speech_onset_s": 0.252,
-    "onset_offset_applied_s": 0.252,
-    "nw_matches": 140,
-    "nw_match_rate": 0.795
+    "drift_s": 0.075,
+    "speech_onset_s": 0.245,
+    "onset_offset_applied_s": 0.245,
+    "nw_matches": 142,
+    "nw_match_rate": 0.816
   }
 }

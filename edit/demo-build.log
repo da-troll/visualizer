@@ -1,12 +1,11 @@
-[generate-mvp-demo] starting at 2026-05-19T21:06:58+00:00
+[generate-mvp-demo] starting at 2026-05-19T21:11:15+00:00
 [generate-mvp-demo] project: /home/eve/projects/nightly-mvps/2026-05-19-visualizer
 [generate-mvp-demo] extra args: --regen-scenes
-playwright produced 2 webm files — concatenating
 {
   "project": "2026-05-19-visualizer",
   "demo_path": "/home/eve/projects/nightly-mvps/2026-05-19-visualizer/edit/demo.mp4",
-  "shared_path": "/home/eve/workspaces/shared/images/mvp/2026-05-19-visualizer/demo-20260519T210659.mp4",
-  "demo_video_url": "https://mvp.trollefsen.com/media/mvp/2026-05-19-visualizer/demo-20260519T210659.mp4",
+  "shared_path": "/home/eve/workspaces/shared/images/mvp/2026-05-19-visualizer/demo-20260519T211116.mp4",
+  "demo_video_url": "https://mvp.trollefsen.com/media/mvp/2026-05-19-visualizer/demo-20260519T211116.mp4",
   "stages": [
     "preflight",
     "auth_handshake",
@@ -23,6 +22,6 @@ playwright produced 2 webm files — concatenating
   ],
   "log_path": "/home/eve/projects/nightly-mvps/2026-05-19-visualizer/edit/pipeline.log.json"
 }
-[generate-mvp-demo] orchestrator exit: 0 at 2026-05-19T21:10:01+00:00
-[generate-mvp-demo] faststart applied to /home/eve/workspaces/shared/images/mvp/2026-05-19-visualizer/demo-20260519T210659.mp4
-DEMO_R2_OK url=https://clawdash.storage.trollefsen.com/mvp/2026-05-19-visualizer/demo-20260519T210659.mp4
+[generate-mvp-demo] orchestrator exit: 0 at 2026-05-19T21:14:04+00:00
+[generate-mvp-demo] faststart applied to /home/eve/workspaces/shared/images/mvp/2026-05-19-visualizer/demo-20260519T211116.mp4
+DEMO_R2_OK url=https://clawdash.storage.trollefsen.com/mvp/2026-05-19-visualizer/demo-20260519T211116.mp4

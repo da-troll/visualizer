@@ -1,86 +1,86 @@
 {
   "version": 1,
-  "generated_at": "2026-05-19T21:07:25+00:00",
+  "generated_at": "2026-05-19T21:11:39+00:00",
   "live_url": "https://mvp.trollefsen.com/2026-05-19-visualizer/",
   "estimated_duration_s": 45.0,
   "scenes": [
     {
-      "name": "Land on visualizer",
+      "name": "Land on visualizer home",
       "action": "wait",
       "ms": 4000,
-      "note": "Hold on the default Bars mode and dark stage so the viewer orients to the product layout."
+      "note": "Hold on the centered empty-state canvas and bottom control bar so viewers understand this is an audio visualizer with multiple modes and export controls."
     },
     {
-      "name": "Switch to Wave mode",
-      "action": "click",
-      "selector": "button:has-text(\"Wave\")",
+      "name": "Hover Bars mode",
+      "action": "hover",
+      "selector": "button:has-text('Bars')",
       "ms_after": 3500,
-      "note": "Start the journey by showing that visual modes are instantly switchable."
+      "note": "Start by emphasizing the default mode control in the mode strip."
     },
     {
-      "name": "Observe wave mode",
+      "name": "Notice mode strip layout",
       "action": "wait",
       "ms": 4000,
-      "note": "Notice the active mode changes while the large canvas remains the focus."
+      "note": "Notice the seven available visualizer modes lined up across the bottom toolbar."
     },
     {
       "name": "Switch to Spectrogram",
       "action": "click",
-      "selector": "button:has-text(\"Spectrogram\")",
+      "selector": "button:has-text('Spectrogram')",
       "ms_after": 3500,
-      "note": "Show a second mode to communicate range across the seven visualizers."
+      "note": "Show that a single tap changes the visualization mode."
     },
     {
-      "name": "Observe spectrogram option",
+      "name": "Observe Spectrogram selected",
       "action": "wait",
       "ms": 4000,
-      "note": "Notice how the mode bar makes rapid experimentation easy."
+      "note": "Notice the selected state moving to Spectrogram, signaling fast mode switching even before audio is loaded."
     },
     {
       "name": "Switch to Radial",
       "action": "click",
-      "selector": "button:has-text(\"Radial\")",
+      "selector": "button:has-text('Radial')",
       "ms_after": 3500,
-      "note": "Move into a more stylized layout to vary the visual rhythm of the demo."
+      "note": "Demonstrate another style to reinforce the variety of canvas modes."
     },
     {
-      "name": "Observe radial mode",
+      "name": "Observe Radial selected",
       "action": "wait",
       "ms": 4000,
-      "note": "Notice the one-click mode switching without leaving the main stage."
+      "note": "Notice the mode toggle remains compact and immediate, ideal for live performance tweaking."
     },
     {
-      "name": "Change palette",
+      "name": "Switch to Particles",
       "action": "click",
-      "selector": ".palette-chip:nth-child(4)",
+      "selector": "button:has-text('Particles')",
       "ms_after": 3500,
-      "note": "Demonstrate palette personalization using one of the visible color chips."
+      "note": "Land on a more dynamic-looking mode for the remainder of the walkthrough."
     },
     {
-      "name": "Observe palette transition",
+      "name": "Observe Particles selected",
       "action": "wait",
       "ms": 4000,
-      "note": "Notice the color theme change across the interface and canvas area."
+      "note": "Notice Particles is now active, hinting at the breadth of rendering styles available."
     },
     {
-      "name": "Switch aspect to square",
+      "name": "Choose a different palette",
       "action": "click",
-      "selector": "button:has-text(\"1:1\")",
+      "selector": ".palette-chip:nth-child(3)",
       "ms_after": 3500,
-      "note": "Show that the stage can be reframed for different output formats."
+      "note": "Show palette customization using one of the color chips in the toolbar."
     },
     {
-      "name": "Observe square framing",
+      "name": "Observe palette chip change",
       "action": "wait",
       "ms": 4000,
-      "note": "Notice the aspect-ratio controls reshape the canvas presentation instantly."
+      "note": "Notice the palette controls are instantly accessible for changing the visual mood."
     },
     {
-      "name": "Switch aspect to vertical",
+      "name": "Switch aspect ratio to portrait",
       "action": "click",
-      "selector": "button:has-text(\"9:16\")",
+      "selector": "button:has-text('9:16')",
       "ms_after": 3500,
-      "note": "Highlight the mobile-first export format mentioned in the product description."
+      "note": "Highlight the social-friendly portrait export format."
     }
   ]
 }

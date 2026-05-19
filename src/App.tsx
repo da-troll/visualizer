@@ -92,14 +92,8 @@ function App() {
     return () => { ro.disconnect(); window.removeEventListener('resize', fit); };
   }, [aspect]);
 
-  // Update URL hash when state changes
-  useEffect(() => {
-    const s = { mode, palette: paletteId, aspect, response, ...bandScale };
-    const h = encodeHash(s);
-    if (window.location.hash !== h) {
-      history.replaceState(null, '', window.location.pathname + window.location.search + h);
-    }
-  }, [mode, paletteId, aspect, response, bandScale]);
+  // URL hash is only written on explicit "Copy link" — not on every settings change.
+  // Initial hash is still parsed on mount (above) so shared links restore state.
 
   // Palette transition
   useEffect(() => {
@@ -403,12 +397,15 @@ function App() {
   }, [bandScale, engine, inputType, mode, recordingProgress]);
 
   const copyShareLink = useCallback(() => {
+    const s = { mode, palette: paletteId, aspect, response, ...bandScale };
+    const h = encodeHash(s);
+    history.replaceState(null, '', window.location.pathname + window.location.search + h);
     const url = window.location.href;
     navigator.clipboard?.writeText(url).then(
       () => showToast('Link copied'),
       () => showToast('Copy failed'),
     );
-  }, []);
+  }, [mode, paletteId, aspect, response, bandScale]);
 
   const palettePreview = (p: Palette) => ({
     background: `conic-gradient(${rgb(p.primary)} 0deg 120deg, ${rgb(p.secondary)} 120deg 240deg, ${rgb(p.accent)} 240deg 360deg)`,
