@@ -46,6 +46,9 @@ interface BeatState {
   lastBeatAt: number;
   // file (scheduled) path
   scheduled: { bpm: number; offset: number; lastIdx: number } | null;
+  // ctx.currentTime-relative playback origin. ctxPlayStart = ctx.currentTime when audio was at position 0.
+  // null while paused or before first play. Re-synced on play/seeked.
+  ctxPlayStart: number | null;
   // shared
   bpm: number;
 }
@@ -68,7 +71,7 @@ export class AudioEngine {
   timeFloat = new Float32Array(FFT_SIZE);
   beatFreq = new Uint8Array(BEAT_FFT_SIZE / 2);
   onAnalysisProgress: ((stage: 'decoding' | 'analyzing' | 'done' | 'failed') => void) | null = null;
-  beatState: BeatState = { prevSpectrum: null, fluxHistory: [], lastBeatAt: 0, scheduled: null, bpm: 0 };
+  beatState: BeatState = { prevSpectrum: null, fluxHistory: [], lastBeatAt: 0, scheduled: null, ctxPlayStart: null, bpm: 0 };
 
   ensureContext() {
     if (!this.ctx) {
@@ -121,7 +124,7 @@ export class AudioEngine {
     if (!this.ctx || !this.gain) return;
     await this.stop();
 
-    this.beatState = { prevSpectrum: null, fluxHistory: [], lastBeatAt: 0, scheduled: null, bpm: 0 };
+    this.beatState = { prevSpectrum: null, fluxHistory: [], lastBeatAt: 0, scheduled: null, ctxPlayStart: null, bpm: 0 };
 
     // Decode buffer for pre-analysis BEFORE attaching MediaElementSource.
     // (decodeAudioData consumes a fresh ArrayBuffer copy — does not interfere with the <audio> element.)
@@ -140,6 +143,15 @@ export class AudioEngine {
     el.crossOrigin = 'anonymous';
     el.loop = true;
     this.audioEl = el;
+    // Sync ctx-time playback origin on every play/seek so audioCtx.currentTime
+    // can be used as a sample-accurate clock for beat scheduling.
+    const syncOrigin = () => {
+      if (this.ctx) this.beatState.ctxPlayStart = this.ctx.currentTime - el.currentTime;
+    };
+    el.addEventListener('play', syncOrigin);
+    el.addEventListener('seeked', syncOrigin);
+    el.addEventListener('pause', () => { this.beatState.ctxPlayStart = null; });
+    el.addEventListener('ended', () => { this.beatState.ctxPlayStart = null; });
     const node = this.ctx.createMediaElementSource(el);
     node.connect(this.gain);
     this.source = node;
@@ -200,7 +212,7 @@ export class AudioEngine {
     if (this.source) { try { this.source.disconnect(); } catch {} this.source = null; }
     this.inputType = 'idle';
     this.playing = false;
-    this.beatState = { prevSpectrum: null, fluxHistory: [], lastBeatAt: 0, scheduled: null, bpm: 0 };
+    this.beatState = { prevSpectrum: null, fluxHistory: [], lastBeatAt: 0, scheduled: null, ctxPlayStart: null, bpm: 0 };
   }
 
   sample(now: number): AudioFrame | null {
@@ -227,11 +239,15 @@ export class AudioEngine {
     let flux = 0;
     const scheduled = this.beatState.scheduled;
     if (this.inputType === 'file') {
-      if (scheduled && this.audioEl && this.playing) {
-        // Sign convention (per Daniel): trigger flash slightly AHEAD of the scheduled audio
-        // position so the user sees the flash at the same wall-clock instant they hear the beat.
-        const latency = (this.ctx.outputLatency || 0) + (this.ctx.baseLatency || 0);
-        const t = this.audioEl.currentTime + latency;
+      // File mode: schedule-only. Flux path is unreachable from here — branch is hoisted.
+      if (scheduled && this.audioEl && this.playing && this.beatState.ctxPlayStart !== null) {
+        // Sample-accurate playback clock: ctx.currentTime - ctxPlayStart.
+        // Re-synced on every play/seeked event so HTMLMediaElement seek doesn't drift the clock.
+        const playbackTime = this.ctx.currentTime - this.beatState.ctxPlayStart;
+        // Pre-advance by one rAF frame (16 ms) + baseLatency + outputLatency so the
+        // flash hits the screen at the same wall-clock instant the kick hits the speaker.
+        const lookahead = 0.016 + (this.ctx.baseLatency || 0) + (this.ctx.outputLatency || 0);
+        const t = playbackTime + lookahead;
         const period = 60 / scheduled.bpm;
         const elapsed = t - scheduled.offset;
         if (elapsed >= 0) {
@@ -239,19 +255,15 @@ export class AudioEngine {
           if (idx > scheduled.lastIdx) {
             scheduled.lastIdx = idx;
             beat = true;
-            if ((idx & 7) === 0) {
-              console.debug('[visualizer] beat idx=%d audioT=%s nextAt=%s latency=%sms',
-                idx, this.audioEl.currentTime.toFixed(3),
-                (scheduled.offset + (idx + 1) * period).toFixed(3),
-                (latency * 1000).toFixed(1));
-            }
+            console.log('[viz] SCHEDULE fire idx=%d playbackT=%s lookahead=%sms ctxT=%s',
+              idx, playbackTime.toFixed(3), (lookahead * 1000).toFixed(1),
+              this.ctx.currentTime.toFixed(3));
           }
         } else if (elapsed < -0.2) {
-          // looped — reset
-          scheduled.lastIdx = -1;
+          scheduled.lastIdx = -1; // looped — reset
         }
       }
-      // else: schedule not ready / unavailable → no flash this frame. Bars still animate.
+      // schedule not ready / not playing → no flash this frame. Bars still animate.
     } else if (this.inputType === 'mic') {
       // Mic (realtime) path: bass-banded spectral flux on the snappy beatAnalyser.
       if (!this.beatState.prevSpectrum) this.beatState.prevSpectrum = new Float32Array(beatBins);
@@ -278,6 +290,8 @@ export class AudioEngine {
       if (flux > threshold && now - this.beatState.lastBeatAt > BEAT_REFRACTORY_MS) {
         beat = true;
         this.beatState.lastBeatAt = now;
+        console.log('[viz] FLUX fire inputType=%s flux=%s threshold=%s',
+          this.inputType, flux.toFixed(2), threshold.toFixed(2));
       }
     }
 
