@@ -25,8 +25,13 @@ interface BeatState {
 }
 
 const FFT_SIZE = 2048;
-const FLUX_HISTORY_LEN = 43; // ~1 second at 44.1kHz / 1024 hop
+const FLUX_HISTORY_LEN = 50; // ~0.8s at 60fps — long enough to ignore short transients, short enough to track tempo drift
 const BEAT_HISTORY_LEN = 8;
+const BEAT_REFRACTORY_MS = 250;
+// Bass band for kick-drum-weighted flux. Hi-hats / vocals are noisy in the full spectrum
+// and trigger false positives; the perceived "beat" lives in 30–200 Hz.
+const BEAT_BAND_LO_HZ = 30;
+const BEAT_BAND_HI_HZ = 200;
 
 export class AudioEngine {
   ctx: AudioContext | null = null;
@@ -38,7 +43,7 @@ export class AudioEngine {
   inputType: InputSource = 'idle';
   playing = false;
   micSensitivity = 0.5; // 0..1, maps to minDecibels
-  smoothing = 0.78;
+  smoothing = 0.5; // AnalyserNode smoothingTimeConstant — 0.5 is snappy without being twitchy
   freq = new Uint8Array(FFT_SIZE / 2);
   time = new Uint8Array(FFT_SIZE);
   timeFloat = new Float32Array(FFT_SIZE);
@@ -142,17 +147,22 @@ export class AudioEngine {
     for (let i = 0; i < this.timeFloat.length; i++) rms += this.timeFloat[i] * this.timeFloat[i];
     rms = Math.sqrt(rms / this.timeFloat.length);
 
-    // Spectral flux (positive differences on linear magnitude)
+    // Bass-band spectral flux — sum positive diffs only in 30–200 Hz where the kick lives.
+    // Full-spectrum flux false-triggers on hi-hats, vocals, sibilance.
     let flux = 0;
     const cur = this.freq;
     if (!this.beatState.prevSpectrum) this.beatState.prevSpectrum = new Float32Array(bins);
     const prev = this.beatState.prevSpectrum;
+    const beatLoBin = Math.max(1, Math.floor((BEAT_BAND_LO_HZ / nyquist) * bins));
+    const beatHiBin = Math.min(bins, Math.ceil((BEAT_BAND_HI_HZ / nyquist) * bins));
     for (let i = 0; i < bins; i++) {
-      const diff = cur[i] - prev[i];
-      if (diff > 0) flux += diff;
+      if (i >= beatLoBin && i < beatHiBin) {
+        const diff = cur[i] - prev[i];
+        if (diff > 0) flux += diff;
+      }
       prev[i] = cur[i];
     }
-    flux = flux / bins;
+    flux = flux / Math.max(1, beatHiBin - beatLoBin);
 
     // Adaptive threshold via rolling average
     const hist = this.beatState.fluxHistory;
@@ -161,10 +171,11 @@ export class AudioEngine {
     let avg = 0;
     for (let i = 0; i < hist.length; i++) avg += hist[i];
     avg = avg / Math.max(1, hist.length);
-    const threshold = avg * 1.55 + 0.5;
+    // Threshold above rolling average, with a small absolute floor so silence doesn't spuriously trigger.
+    const threshold = avg * 1.55 + 1.2;
 
     let beat = false;
-    if (flux > threshold && now - this.beatState.lastBeatAt > 220) {
+    if (flux > threshold && now - this.beatState.lastBeatAt > BEAT_REFRACTORY_MS) {
       beat = true;
       this.beatState.lastBeatAt = now;
       this.beatState.beatTimes.push(now);

@@ -1,7 +1,7 @@
-Getting audio to look good usually means bouncing between plugins, screen capture hacks, and whatever visualizer happens to be open. Visualizer keeps that in one place: drop in a track or open the mic, pick from seven canvas modes, and it starts moving with the sound.
+Getting audio to feel alive usually means bouncing between a player, an editor, and some export tool. Visualizer keeps that in one place: drop in a track or open the mic, and it turns sound into motion immediately.
 
-What makes it feel solid is that it’s not just animating randomly. Beat detection keeps a live BPM readout in step, palettes shift smoothly instead of snapping, and the sub, bass, mid, and treble sliders let you decide what actually drives the motion. So if you want the low end to hit harder, or the highs to stay calmer, you can shape that response directly.
+What makes it click is that it’s not just one look. You’ve got seven canvas modes, from clean bars and waveforms to radial, constellation, particles, even Lissajous, and the color system reacts with it instead of feeling pasted on. Beat detection keeps a live BPM readout running, while the sub, bass, mid, and treble sliders let you decide what the visuals should listen to most.
 
-It also handles the practical bits you usually end up stitching together later. Audio files pull in title, artist, and album art automatically, fullscreen stays clean, aspect ratios switch fast, and exporting a vertical five-second WebM loop is one click instead of a separate workflow.
+It also handles the practical stuff without fuss. Drag in an audio file and it pulls the track metadata and album art; switch to microphone input when you want something live; flip aspect ratios or go fullscreen when you need the composition to fit the moment. And when you’ve got a version worth keeping, export a PNG or a clean 9:16 WebM loop in one click.
 
-So instead of spending your time assembling a visual setup, you can just make the sound feel visible.
+So instead of wrestling tools, you can shape a sound into something watchable fast enough to use while the idea still feels fresh.

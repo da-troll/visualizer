@@ -35,7 +35,7 @@ function App() {
   const [mode, setMode] = useState<ModeId>('bars');
   const [paletteId, setPaletteId] = useState<string>('trollspace');
   const [aspect, setAspect] = useState<Aspect>('16:9');
-  const [response, setResponse] = useState(0.78); // smoothingTimeConstant
+  const [response, setResponse] = useState(0.5); // smoothingTimeConstant — 0.5 default for snappy bars
   const [bandScale, setBandScale] = useState({ ...DEFAULT_BAND_SCALE });
   const [bandsOpen, setBandsOpen] = useState(false);
   const [meta, setMeta] = useState<TrackMeta | null>(null);

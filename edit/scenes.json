@@ -1,86 +1,87 @@
 {
   "version": 1,
-  "generated_at": "2026-05-19T20:23:47+00:00",
+  "generated_at": "2026-05-19T20:47:15+00:00",
   "live_url": "https://mvp.trollefsen.com/2026-05-19-visualizer/",
-  "estimated_duration_s": 46.0,
+  "estimated_duration_s": 45.5,
   "scenes": [
     {
-      "name": "Land on visualizer",
+      "name": "land on visualizer",
       "action": "wait",
       "ms": 4000,
-      "note": "Hold on the empty stage so the viewer takes in the dark canvas, centered title, and the dock of controls along the bottom."
+      "note": "Let the viewer take in the dark stage, centered title, and the control bar with modes, palettes, aspect ratios, export buttons, and mic input."
     },
     {
-      "name": "Open microphone input",
+      "name": "start live input",
       "action": "click",
-      "selector": "button:has-text(\"\ud83c\udf99 Mic\")",
+      "selector": "button.icon-btn:nth-of-type(3)",
       "ms_after": 4000,
-      "note": "Start the primary live demo path by enabling mic input so the canvas can react without uploading a file."
+      "note": "Enable microphone input to bring the visualizer to life without relying on a file picker."
     },
     {
-      "name": "Notice live motion begins",
+      "name": "observe mic activation",
       "action": "wait",
       "ms": 4000,
-      "note": "Viewer should notice the visualizer wake up and begin responding to ambient sound, with BPM and reactive movement appearing on the canvas."
+      "note": "Notice the canvas begin reacting and the interface shift from idle to live audio visualization."
     },
     {
-      "name": "Switch to radial mode",
+      "name": "switch to radial mode",
       "action": "click",
-      "selector": "button:has-text(\"Radial\")",
+      "selector": "button:nth-of-type(4)",
       "ms_after": 3500,
-      "note": "Show that the same live audio instantly remaps into a different visual mode."
+      "note": "Move from the default Bars view into a more dramatic circular composition."
     },
     {
-      "name": "Observe circular composition",
+      "name": "observe radial motion",
       "action": "wait",
       "ms": 4000,
-      "note": "Notice the canvas transforms from the default bars layout into a more immersive circular radial pattern."
+      "note": "Notice how the visual response wraps around the center and feels more immersive."
     },
     {
-      "name": "Change palette",
+      "name": "change palette",
       "action": "click",
-      "selector": ".palette-chip:nth-child(4)",
+      "selector": "button.palette-chip:nth-of-type(3)",
       "ms_after": 3500,
-      "note": "Demonstrate one-click palette changes using one of the visible palette chips in the control row."
+      "note": "Switch to another palette to show the instant color transformation across the active visualization."
     },
     {
-      "name": "Observe palette lerp",
+      "name": "observe palette transition",
       "action": "wait",
       "ms": 4000,
-      "note": "Viewer should notice the smooth color transition rather than a harsh jump, reinforcing the polished palette interpolation."
+      "note": "Notice the smooth palette lerp rather than a harsh color cut."
     },
     {
-      "name": "Switch to tall export ratio",
+      "name": "switch to portrait export ratio",
       "action": "click",
-      "selector": "button:has-text(\"9:16\")",
-      "ms_after": 4000,
-      "note": "Show the aspect-ratio control by moving into the portrait format used for loops and social content."
+      "selector": "button:nth-of-type(18)",
+      "ms_after": 3500,
+      "note": "Change the canvas framing to 9:16 to demonstrate social-ready composition."
     },
     {
-      "name": "Observe portrait framing",
+      "name": "observe 9:16 framing",
       "action": "wait",
       "ms": 4000,
-      "note": "Notice the stage reframes into a vertical composition while preserving the animated response."
+      "note": "Notice the stage recompose into a tall portrait layout suitable for loops and short-form video."
     },
     {
-      "name": "Try a more intricate mode",
+      "name": "open particles mode",
       "action": "click",
-      "selector": "button:has-text(\"Constellation\")",
+      "selector": "button:nth-of-type(7)",
       "ms_after": 3500,
-      "note": "Highlight another signature look to emphasize the range of seven visualizer modes."
+      "note": "Show a second visual style with more motion and texture."
     },
     {
-      "name": "Observe constellation behavior",
+      "name": "observe particles detail",
       "action": "wait",
       "ms": 4000,
-      "note": "Viewer should notice points and connective motion reacting differently to the same sound input."
+      "note": "Notice the denser, more atmospheric particle behavior reacting to incoming sound."
     },
     {
-      "name": "Hover export loop control",
-      "action": "hover",
-      "selector": "button:has-text(\"\u23fa Loop 9:16\")",
+      "name": "adjust response sensitivity",
+      "action": "fill",
+      "selector": "input[type=\"range\"]",
+      "text": "0.85",
       "ms_after": 3500,
-      "note": "Call attention to the one-click portrait loop export without actually triggering recording."
+      "note": "Increase the response smoothing control to demonstrate tuning how quickly the motion settles."
     }
   ]
 }
