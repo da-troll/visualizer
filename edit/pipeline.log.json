@@ -1,0 +1,331 @@
+{
+  "run_id": "20260519T202325",
+  "project_dir": "/home/eve/projects/nightly-mvps/2026-05-19-visualizer",
+  "start_ts": 1779222205.5109828,
+  "stages": [
+    {
+      "stage_id": "preflight",
+      "start_ts": 1779222205.5111208,
+      "end_ts": 1779222211.9757488,
+      "duration_s": 6.465,
+      "cache_hit": false,
+      "sub_agent_id": null,
+      "retry_count": 0,
+      "output_size_bytes": null,
+      "fallback_chain_walked": [],
+      "error": null,
+      "extra": {
+        "ok": true,
+        "status_code": 200,
+        "load_ms": 831,
+        "title": "Visualizer \u00b7 trollspace",
+        "interactive_count": 27,
+        "console_errors": [],
+        "warnings": [],
+        "error": null
+      }
+    },
+    {
+      "stage_id": "auth_handshake",
+      "start_ts": 1779222211.9760795,
+      "end_ts": 1779222211.9773989,
+      "duration_s": 0.001,
+      "cache_hit": false,
+      "sub_agent_id": null,
+      "retry_count": 0,
+      "output_size_bytes": null,
+      "fallback_chain_walked": [],
+      "error": null,
+      "extra": {
+        "skipped": "no_auth_json"
+      }
+    },
+    {
+      "stage_id": "plan",
+      "start_ts": 1779222211.977543,
+      "end_ts": 1779222227.772859,
+      "duration_s": 15.795,
+      "cache_hit": false,
+      "sub_agent_id": null,
+      "retry_count": 0,
+      "output_size_bytes": null,
+      "fallback_chain_walked": [],
+      "error": null,
+      "extra": {
+        "plan_source": "scene_planner:llm",
+        "estimated_duration_s": 46.0,
+        "scene_count": 12
+      }
+    },
+    {
+      "stage_id": "script",
+      "start_ts": 1779222227.7730753,
+      "end_ts": 1779222232.6885731,
+      "duration_s": 4.915,
+      "cache_hit": false,
+      "sub_agent_id": null,
+      "retry_count": 0,
+      "output_size_bytes": 1024,
+      "fallback_chain_walked": [],
+      "error": null,
+      "extra": {
+        "word_count": 174,
+        "scene_aware": true
+      }
+    },
+    {
+      "stage_id": "tts",
+      "start_ts": 1779222232.6887374,
+      "end_ts": 1779222258.6195552,
+      "duration_s": 25.931,
+      "cache_hit": false,
+      "sub_agent_id": null,
+      "retry_count": 0,
+      "output_size_bytes": 2660756,
+      "fallback_chain_walked": [
+        {
+          "provider": "gemini",
+          "ok": true,
+          "voice": "Aoede",
+          "bytes": 2660756,
+          "speed": 1.0,
+          "atempo": 1.08,
+          "atempo_meta": {},
+          "model": null
+        }
+      ],
+      "error": null,
+      "extra": {
+        "provider_used": "gemini",
+        "voice": "Aoede",
+        "mime": "audio/wav"
+      }
+    },
+    {
+      "stage_id": "loudnorm",
+      "start_ts": 1779222258.6203833,
+      "end_ts": 1779222261.804784,
+      "duration_s": 3.184,
+      "cache_hit": false,
+      "sub_agent_id": null,
+      "retry_count": 0,
+      "output_size_bytes": 5321434,
+      "fallback_chain_walked": [],
+      "error": null,
+      "extra": {
+        "ok": true,
+        "fallback_used": false,
+        "target_lufs": -14.0,
+        "measured_in_i": "-17.70",
+        "measured_in_tp": "0.63",
+        "measured_out_lufs": -14.6
+      }
+    },
+    {
+      "stage_id": "walkthrough",
+      "start_ts": 1779222261.8051445,
+      "end_ts": 1779222331.3043993,
+      "duration_s": 69.499,
+      "cache_hit": false,
+      "sub_agent_id": null,
+      "retry_count": 0,
+      "output_size_bytes": 981361,
+      "fallback_chain_walked": [],
+      "error": null,
+      "extra": {
+        "scenes": [
+          {
+            "name": "Land on visualizer",
+            "start_s": 0.0,
+            "end_s": 4.0,
+            "note": "Hold on the empty stage so the viewer takes in the dark canvas, centered title, and the dock of controls along the bottom."
+          },
+          {
+            "name": "Open microphone input",
+            "start_s": 4.0,
+            "end_s": 8.0,
+            "note": "Start the primary live demo path by enabling mic input so the canvas can react without uploading a file."
+          },
+          {
+            "name": "Notice live motion begins",
+            "start_s": 8.0,
+            "end_s": 12.0,
+            "note": "Viewer should notice the visualizer wake up and begin responding to ambient sound, with BPM and reactive movement appearing on the canvas."
+          },
+          {
+            "name": "Switch to radial mode",
+            "start_s": 12.0,
+            "end_s": 15.5,
+            "note": "Show that the same live audio instantly remaps into a different visual mode."
+          },
+          {
+            "name": "Observe circular composition",
+            "start_s": 15.5,
+            "end_s": 19.5,
+            "note": "Notice the canvas transforms from the default bars layout into a more immersive circular radial pattern."
+          },
+          {
+            "name": "Change palette",
+            "start_s": 19.5,
+            "end_s": 23.0,
+            "note": "Demonstrate one-click palette changes using one of the visible palette chips in the control row."
+          },
+          {
+            "name": "Observe palette lerp",
+            "start_s": 23.0,
+            "end_s": 27.0,
+            "note": "Viewer should notice the smooth color transition rather than a harsh jump, reinforcing the polished palette interpolation."
+          },
+          {
+            "name": "Switch to tall export ratio",
+            "start_s": 27.0,
+            "end_s": 31.0,
+            "note": "Show the aspect-ratio control by moving into the portrait format used for loops and social content."
+          },
+          {
+            "name": "Observe portrait framing",
+            "start_s": 31.0,
+            "end_s": 35.0,
+            "note": "Notice the stage reframes into a vertical composition while preserving the animated response."
+          },
+          {
+            "name": "Try a more intricate mode",
+            "start_s": 35.0,
+            "end_s": 38.5,
+            "note": "Highlight another signature look to emphasize the range of seven visualizer modes."
+          },
+          {
+            "name": "Observe constellation behavior",
+            "start_s": 38.5,
+            "end_s": 42.5,
+            "note": "Viewer should notice points and connective motion reacting differently to the same sound input."
+          },
+          {
+            "name": "Hover export loop control",
+            "start_s": 42.5,
+            "end_s": 46.0,
+            "note": "Call attention to the one-click portrait loop export without actually triggering recording."
+          }
+        ],
+        "plan_source": "cached:edit/scenes.json",
+        "walkthrough_duration_s": 51.32
+      }
+    },
+    {
+      "stage_id": "stuck_frame",
+      "start_ts": 1779222331.304738,
+      "end_ts": 1779222334.531662,
+      "duration_s": 3.227,
+      "cache_hit": false,
+      "sub_agent_id": null,
+      "retry_count": 0,
+      "output_size_bytes": null,
+      "fallback_chain_walked": [],
+      "error": null,
+      "extra": {
+        "sampled_frames": 51,
+        "largest_cluster_size": 31,
+        "largest_cluster_pct": 0.608,
+        "distinct_clusters": 2,
+        "threshold": 1.0,
+        "hash_distance": 8,
+        "is_stuck": false,
+        "skipped_reason": null
+      }
+    },
+    {
+      "stage_id": "align",
+      "start_ts": 1779222334.5322309,
+      "end_ts": 1779222339.6191437,
+      "duration_s": 5.087,
+      "cache_hit": false,
+      "sub_agent_id": null,
+      "retry_count": 0,
+      "output_size_bytes": 19910,
+      "fallback_chain_walked": [],
+      "error": null,
+      "extra": {
+        "audio_dur_s": 55.43,
+        "asr_word_count": 176,
+        "script_word_count": 174,
+        "alignment_drift_s": 0.465,
+        "fallback_used": false,
+        "speech_onset_s": 0.245,
+        "onset_offset_applied_s": 0.245,
+        "nw_matches": 133,
+        "nw_match_rate": 0.764,
+        "json_path": "/home/eve/projects/nightly-mvps/2026-05-19-visualizer/edit/transcripts/voiceover.json"
+      }
+    },
+    {
+      "stage_id": "assemble",
+      "start_ts": 1779222339.6194656,
+      "end_ts": 1779222375.5024083,
+      "duration_s": 35.883,
+      "cache_hit": false,
+      "sub_agent_id": null,
+      "retry_count": 0,
+      "output_size_bytes": 2631043,
+      "fallback_chain_walked": [],
+      "error": null,
+      "extra": {
+        "srt_cues": 42,
+        "srt_canonicalizations": 0,
+        "srt_overlap_clips": 25,
+        "srt_min_duration_stretches": 24,
+        "tail_strategy": "hold",
+        "voice_dur": 55.43,
+        "walkthrough_dur": 51.31,
+        "tail_gap_s": 4.12,
+        "held_frame_path": "/home/eve/projects/nightly-mvps/2026-05-19-visualizer/edit/_last_frame.png",
+        "concat_method": "demuxer_copy",
+        "walkthrough_fps": 25.0,
+        "effective_target_dur": 55.43
+      }
+    },
+    {
+      "stage_id": "assertions",
+      "start_ts": 1779222375.5031905,
+      "end_ts": 1779222380.1703975,
+      "duration_s": 4.667,
+      "cache_hit": false,
+      "sub_agent_id": null,
+      "retry_count": 0,
+      "output_size_bytes": null,
+      "fallback_chain_walked": [],
+      "error": null,
+      "extra": {
+        "demo_path": "/home/eve/projects/nightly-mvps/2026-05-19-visualizer/edit/demo.mp4",
+        "demo_size_bytes": 2631043,
+        "demo_duration_s": 55.38,
+        "voice_duration_s": 55.43,
+        "srt_cue_count": 42,
+        "first_cue_start_s": 0.245,
+        "last_cue_end_s": 54.965,
+        "cue_drift_s": 0.465,
+        "min_cue_duration_s": 0.26,
+        "max_cue_duration_s": 2.12,
+        "integrated_lufs": -14.7,
+        "passed": true
+      }
+    },
+    {
+      "stage_id": "output",
+      "start_ts": 1779222380.1708906,
+      "end_ts": 1779222380.1734767,
+      "duration_s": 0.003,
+      "cache_hit": false,
+      "sub_agent_id": null,
+      "retry_count": 0,
+      "output_size_bytes": null,
+      "fallback_chain_walked": [],
+      "error": null,
+      "extra": {
+        "shared_versioned_path": "/home/eve/workspaces/shared/images/mvp/2026-05-19-visualizer/demo-20260519T202325.mp4",
+        "shared_latest_path": "/home/eve/workspaces/shared/images/mvp/2026-05-19-visualizer/demo.mp4",
+        "demo_video_url": "https://mvp.trollefsen.com/media/mvp/2026-05-19-visualizer/demo-20260519T202325.mp4",
+        "run_id": "20260519T202325"
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "project_name": "Visualizer",
+  "description": "Standalone web audio visualizer — drop in a track or open the mic and watch it move across seven canvas2D modes with beat-reactive palettes, BPM display, and a one-click 9:16 WebM loop export.",
+  "tech_stack": [
+    "React",
+    "TypeScript",
+    "Vite",
+    "Web Audio API",
+    "Canvas2D"
+  ],
+  "build_date": "2026-05-19",
+  "build_time_hours": 2,
+  "status": "complete",
+  "features": [
+    "7 canvas2D visualizer modes — bars, waveform, spectrogram, radial, Lissajous, constellation, particles",
+    "Drag-drop MP3/WAV/OGG with jsmediatags ID3 extraction (title, artist, album art)",
+    "Live microphone input with sensitivity control",
+    "Spectral-flux beat detection + rolling-median BPM display",
+    "8 palettes (Trollspace default + chromatic mode) with smooth 500ms lerp transitions",
+    "Stem-band sliders (sub/bass/mid/treble) to shape visual response",
+    "PNG screenshot + 5-second 9:16 WebM loop export via MediaRecorder",
+    "Fullscreen mode with auto-hiding controls, aspect-ratio switcher (16:9 / 1:1 / 9:16 / 4:5)",
+    "Shareable permalink encodes mode + palette + aspect + bands into URL hash"
+  ],
+  "live_url": "https://mvp.trollefsen.com/2026-05-19-visualizer/",
+  "github_url": "https://github.com/da-troll/visualizer",
+  "visibility": "public",
+  "inspired_by": "household/visualizer",
+  "quality_bounds": {
+    "stuck_frame_threshold": 1.0
+  },
+  "demo_video_url": "https://clawdash.storage.trollefsen.com/mvp/2026-05-19-visualizer/demo-20260519T202325.mp4"
+}

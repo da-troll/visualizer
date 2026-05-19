@@ -1,0 +1,78 @@
+{
+  "duration_s": 51.32,
+  "plan_source": "cached:edit/scenes.json",
+  "scenes": [
+    {
+      "name": "Land on visualizer",
+      "start_s": 0.0,
+      "end_s": 4.0,
+      "note": "Hold on the empty stage so the viewer takes in the dark canvas, centered title, and the dock of controls along the bottom."
+    },
+    {
+      "name": "Open microphone input",
+      "start_s": 4.0,
+      "end_s": 8.0,
+      "note": "Start the primary live demo path by enabling mic input so the canvas can react without uploading a file."
+    },
+    {
+      "name": "Notice live motion begins",
+      "start_s": 8.0,
+      "end_s": 12.0,
+      "note": "Viewer should notice the visualizer wake up and begin responding to ambient sound, with BPM and reactive movement appearing on the canvas."
+    },
+    {
+      "name": "Switch to radial mode",
+      "start_s": 12.0,
+      "end_s": 15.5,
+      "note": "Show that the same live audio instantly remaps into a different visual mode."
+    },
+    {
+      "name": "Observe circular composition",
+      "start_s": 15.5,
+      "end_s": 19.5,
+      "note": "Notice the canvas transforms from the default bars layout into a more immersive circular radial pattern."
+    },
+    {
+      "name": "Change palette",
+      "start_s": 19.5,
+      "end_s": 23.0,
+      "note": "Demonstrate one-click palette changes using one of the visible palette chips in the control row."
+    },
+    {
+      "name": "Observe palette lerp",
+      "start_s": 23.0,
+      "end_s": 27.0,
+      "note": "Viewer should notice the smooth color transition rather than a harsh jump, reinforcing the polished palette interpolation."
+    },
+    {
+      "name": "Switch to tall export ratio",
+      "start_s": 27.0,
+      "end_s": 31.0,
+      "note": "Show the aspect-ratio control by moving into the portrait format used for loops and social content."
+    },
+    {
+      "name": "Observe portrait framing",
+      "start_s": 31.0,
+      "end_s": 35.0,
+      "note": "Notice the stage reframes into a vertical composition while preserving the animated response."
+    },
+    {
+      "name": "Try a more intricate mode",
+      "start_s": 35.0,
+      "end_s": 38.5,
+      "note": "Highlight another signature look to emphasize the range of seven visualizer modes."
+    },
+    {
+      "name": "Observe constellation behavior",
+      "start_s": 38.5,
+      "end_s": 42.5,
+      "note": "Viewer should notice points and connective motion reacting differently to the same sound input."
+    },
+    {
+      "name": "Hover export loop control",
+      "start_s": 42.5,
+      "end_s": 46.0,
+      "note": "Call attention to the one-click portrait loop export without actually triggering recording."
+    }
+  ]
+}
