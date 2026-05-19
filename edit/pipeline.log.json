@@ -1,13 +1,13 @@
 {
-  "run_id": "20260519T211116",
+  "run_id": "20260519T213101",
   "project_dir": "/home/eve/projects/nightly-mvps/2026-05-19-visualizer",
-  "start_ts": 1779225076.361684,
+  "start_ts": 1779226261.8533156,
   "stages": [
     {
       "stage_id": "preflight",
-      "start_ts": 1779225076.361824,
-      "end_ts": 1779225082.9350774,
-      "duration_s": 6.573,
+      "start_ts": 1779226261.853464,
+      "end_ts": 1779226268.3037062,
+      "duration_s": 6.45,
       "cache_hit": false,
       "sub_agent_id": null,
       "retry_count": 0,
@@ -17,7 +17,7 @@
       "extra": {
         "ok": true,
         "status_code": 200,
-        "load_ms": 976,
+        "load_ms": 843,
         "title": "Visualizer \u00b7 trollspace",
         "interactive_count": 27,
         "console_errors": [],
@@ -27,9 +27,9 @@
     },
     {
       "stage_id": "auth_handshake",
-      "start_ts": 1779225082.9353921,
-      "end_ts": 1779225082.9364724,
-      "duration_s": 0.001,
+      "start_ts": 1779226268.3041306,
+      "end_ts": 1779226268.3058236,
+      "duration_s": 0.002,
       "cache_hit": false,
       "sub_agent_id": null,
       "retry_count": 0,
@@ -42,9 +42,9 @@
     },
     {
       "stage_id": "plan",
-      "start_ts": 1779225082.936665,
-      "end_ts": 1779225099.349519,
-      "duration_s": 16.413,
+      "start_ts": 1779226268.3060632,
+      "end_ts": 1779226283.426369,
+      "duration_s": 15.12,
       "cache_hit": false,
       "sub_agent_id": null,
       "retry_count": 0,
@@ -59,35 +59,35 @@
     },
     {
       "stage_id": "script",
-      "start_ts": 1779225099.3497596,
-      "end_ts": 1779225108.908398,
-      "duration_s": 9.559,
+      "start_ts": 1779226283.42659,
+      "end_ts": 1779226288.1465318,
+      "duration_s": 4.72,
       "cache_hit": false,
       "sub_agent_id": null,
       "retry_count": 0,
-      "output_size_bytes": 1010,
+      "output_size_bytes": 1035,
       "fallback_chain_walked": [],
       "error": null,
       "extra": {
-        "word_count": 174,
+        "word_count": 176,
         "scene_aware": true
       }
     },
     {
       "stage_id": "tts",
-      "start_ts": 1779225108.9085708,
-      "end_ts": 1779225132.4990828,
-      "duration_s": 23.591,
+      "start_ts": 1779226288.146724,
+      "end_ts": 1779226314.747713,
+      "duration_s": 26.601,
       "cache_hit": false,
       "sub_agent_id": null,
       "retry_count": 0,
-      "output_size_bytes": 2703530,
+      "output_size_bytes": 2689196,
       "fallback_chain_walked": [
         {
           "provider": "gemini",
           "ok": true,
           "voice": "Aoede",
-          "bytes": 2703530,
+          "bytes": 2689196,
           "speed": 1.0,
           "atempo": 1.08,
           "atempo_meta": {},
@@ -103,119 +103,119 @@
     },
     {
       "stage_id": "loudnorm",
-      "start_ts": 1779225132.4994478,
-      "end_ts": 1779225134.6011686,
-      "duration_s": 2.102,
+      "start_ts": 1779226314.7480772,
+      "end_ts": 1779226317.2233307,
+      "duration_s": 2.475,
       "cache_hit": false,
       "sub_agent_id": null,
       "retry_count": 0,
-      "output_size_bytes": 5406982,
+      "output_size_bytes": 5378314,
       "fallback_chain_walked": [],
       "error": null,
       "extra": {
         "ok": true,
         "fallback_used": false,
         "target_lufs": -14.0,
-        "measured_in_i": "-17.70",
+        "measured_in_i": "-17.45",
         "measured_in_tp": "-1.44",
-        "measured_out_lufs": -14.2
+        "measured_out_lufs": -14.3
       }
     },
     {
       "stage_id": "walkthrough",
-      "start_ts": 1779225134.6015942,
-      "end_ts": 1779225202.3877249,
-      "duration_s": 67.786,
+      "start_ts": 1779226317.2237518,
+      "end_ts": 1779226387.6481183,
+      "duration_s": 70.424,
       "cache_hit": false,
       "sub_agent_id": null,
       "retry_count": 0,
-      "output_size_bytes": 798863,
+      "output_size_bytes": 748974,
       "fallback_chain_walked": [],
       "error": null,
       "extra": {
         "scenes": [
           {
-            "name": "Land on visualizer home",
+            "name": "Land on visualizer",
             "start_s": 0.0,
             "end_s": 4.0,
-            "note": "Hold on the centered empty-state canvas and bottom control bar so viewers understand this is an audio visualizer with multiple modes and export controls."
+            "note": "Let the homepage breathe: centered canvas, dark theme, and the control dock along the bottom establish this as a live audio visualizer."
           },
           {
-            "name": "Hover Bars mode",
+            "name": "Hover Load audio CTA",
             "start_s": 4.0,
             "end_s": 7.5,
-            "note": "Start by emphasizing the default mode control in the mode strip."
+            "note": "Draw attention to the primary entry point for bringing in a track."
           },
           {
-            "name": "Notice mode strip layout",
+            "name": "Notice upload-first workflow",
             "start_s": 7.5,
             "end_s": 11.5,
-            "note": "Notice the seven available visualizer modes lined up across the bottom toolbar."
+            "note": "Viewer should notice the app is ready for a dropped or loaded audio file before any visualization starts."
           },
           {
-            "name": "Switch to Spectrogram",
+            "name": "Hover Mic option",
             "start_s": 11.5,
             "end_s": 15.0,
-            "note": "Show that a single tap changes the visualization mode."
+            "note": "Show the alternate live microphone input path without triggering any permission prompt."
           },
           {
-            "name": "Observe Spectrogram selected",
+            "name": "Notice dual audio sources",
             "start_s": 15.0,
             "end_s": 19.0,
-            "note": "Notice the selected state moving to Spectrogram, signaling fast mode switching even before audio is loaded."
+            "note": "Call out that the product supports both uploaded tracks and live mic input."
           },
           {
-            "name": "Switch to Radial",
+            "name": "Click Wave mode",
             "start_s": 19.0,
             "end_s": 22.5,
-            "note": "Demonstrate another style to reinforce the variety of canvas modes."
+            "note": "Switch from the default Bars mode to demonstrate one of the alternate visualization styles."
           },
           {
-            "name": "Observe Radial selected",
+            "name": "Notice mode switch",
             "start_s": 22.5,
             "end_s": 26.5,
-            "note": "Notice the mode toggle remains compact and immediate, ideal for live performance tweaking."
+            "note": "Viewer should notice the selected mode chip changes, hinting at instant visual mode swapping."
           },
           {
-            "name": "Switch to Particles",
+            "name": "Click Radial mode",
             "start_s": 26.5,
             "end_s": 30.0,
-            "note": "Land on a more dynamic-looking mode for the remainder of the walkthrough."
+            "note": "Continue the tour by showcasing another visualizer mode option."
           },
           {
-            "name": "Observe Particles selected",
+            "name": "Notice variety of modes",
             "start_s": 30.0,
             "end_s": 34.0,
-            "note": "Notice Particles is now active, hinting at the breadth of rendering styles available."
+            "note": "Emphasize that the interface offers multiple creative renderers from the same control strip."
           },
           {
-            "name": "Choose a different palette",
+            "name": "Click Particles mode",
             "start_s": 34.0,
             "end_s": 37.5,
-            "note": "Show palette customization using one of the color chips in the toolbar."
+            "note": "End the mode tour on a more expressive option to suggest depth across all seven modes."
           },
           {
-            "name": "Observe palette chip change",
+            "name": "Notice selected particles mode",
             "start_s": 37.5,
             "end_s": 41.5,
-            "note": "Notice the palette controls are instantly accessible for changing the visual mood."
+            "note": "Viewer should register the active-state change and the breadth of mode choices available."
           },
           {
-            "name": "Switch aspect ratio to portrait",
+            "name": "Click first palette chip",
             "start_s": 41.5,
             "end_s": 45.0,
-            "note": "Highlight the social-friendly portrait export format."
+            "note": "Demonstrate one-click palette switching using the color chips in the bottom toolbar."
           }
         ],
         "plan_source": "cached:edit/scenes.json",
-        "walkthrough_duration_s": 51.0
+        "walkthrough_duration_s": 50.36
       }
     },
     {
       "stage_id": "stuck_frame",
-      "start_ts": 1779225202.3880048,
-      "end_ts": 1779225205.6949189,
-      "duration_s": 3.307,
+      "start_ts": 1779226387.6484098,
+      "end_ts": 1779226391.053822,
+      "duration_s": 3.405,
       "cache_hit": false,
       "sub_agent_id": null,
       "retry_count": 0,
@@ -223,10 +223,10 @@
       "fallback_chain_walked": [],
       "error": null,
       "extra": {
-        "sampled_frames": 51,
-        "largest_cluster_size": 46,
-        "largest_cluster_pct": 0.902,
-        "distinct_clusters": 2,
+        "sampled_frames": 50,
+        "largest_cluster_size": 50,
+        "largest_cluster_pct": 1.0,
+        "distinct_clusters": 1,
         "threshold": 1.0,
         "hash_distance": 8,
         "is_stuck": false,
@@ -235,59 +235,59 @@
     },
     {
       "stage_id": "align",
-      "start_ts": 1779225205.6953943,
-      "end_ts": 1779225211.7545974,
-      "duration_s": 6.059,
+      "start_ts": 1779226391.0542815,
+      "end_ts": 1779226398.0182686,
+      "duration_s": 6.964,
       "cache_hit": false,
       "sub_agent_id": null,
       "retry_count": 0,
-      "output_size_bytes": 19878,
+      "output_size_bytes": 20120,
       "fallback_chain_walked": [],
       "error": null,
       "extra": {
-        "audio_dur_s": 56.32,
-        "asr_word_count": 177,
-        "script_word_count": 174,
-        "alignment_drift_s": 0.075,
+        "audio_dur_s": 56.02,
+        "asr_word_count": 179,
+        "script_word_count": 176,
+        "alignment_drift_s": 0.0,
         "fallback_used": false,
-        "speech_onset_s": 0.245,
-        "onset_offset_applied_s": 0.245,
-        "nw_matches": 142,
-        "nw_match_rate": 0.816,
+        "speech_onset_s": 0.233,
+        "onset_offset_applied_s": 0.233,
+        "nw_matches": 134,
+        "nw_match_rate": 0.761,
         "json_path": "/home/eve/projects/nightly-mvps/2026-05-19-visualizer/edit/transcripts/voiceover.json"
       }
     },
     {
       "stage_id": "assemble",
-      "start_ts": 1779225211.7549448,
-      "end_ts": 1779225237.5655334,
-      "duration_s": 25.811,
+      "start_ts": 1779226398.018602,
+      "end_ts": 1779226425.1271892,
+      "duration_s": 27.109,
       "cache_hit": false,
       "sub_agent_id": null,
       "retry_count": 0,
-      "output_size_bytes": 2461578,
+      "output_size_bytes": 2397768,
       "fallback_chain_walked": [],
       "error": null,
       "extra": {
         "srt_cues": 46,
         "srt_canonicalizations": 0,
         "srt_overlap_clips": 26,
-        "srt_min_duration_stretches": 33,
+        "srt_min_duration_stretches": 29,
         "tail_strategy": "hold",
-        "voice_dur": 56.32,
-        "walkthrough_dur": 50.99,
-        "tail_gap_s": 5.33,
+        "voice_dur": 56.02,
+        "walkthrough_dur": 50.34,
+        "tail_gap_s": 5.68,
         "held_frame_path": "/home/eve/projects/nightly-mvps/2026-05-19-visualizer/edit/_last_frame.png",
         "concat_method": "demuxer_copy",
         "walkthrough_fps": 25.0,
-        "effective_target_dur": 56.32
+        "effective_target_dur": 56.02
       }
     },
     {
       "stage_id": "assertions",
-      "start_ts": 1779225237.5660558,
-      "end_ts": 1779225243.5829985,
-      "duration_s": 6.017,
+      "start_ts": 1779226425.127785,
+      "end_ts": 1779226429.9478288,
+      "duration_s": 4.82,
       "cache_hit": false,
       "sub_agent_id": null,
       "retry_count": 0,
@@ -296,23 +296,23 @@
       "error": null,
       "extra": {
         "demo_path": "/home/eve/projects/nightly-mvps/2026-05-19-visualizer/edit/demo.mp4",
-        "demo_size_bytes": 2461578,
-        "demo_duration_s": 56.27,
-        "voice_duration_s": 56.32,
+        "demo_size_bytes": 2397768,
+        "demo_duration_s": 56.0,
+        "voice_duration_s": 56.02,
         "srt_cue_count": 46,
-        "first_cue_start_s": 0.245,
-        "last_cue_end_s": 56.245,
-        "cue_drift_s": 0.075,
+        "first_cue_start_s": 0.233,
+        "last_cue_end_s": 56.02,
+        "cue_drift_s": 0.0,
         "min_cue_duration_s": 0.2,
-        "max_cue_duration_s": 2.45,
-        "integrated_lufs": -14.2,
+        "max_cue_duration_s": 2.2,
+        "integrated_lufs": -14.3,
         "passed": true
       }
     },
     {
       "stage_id": "output",
-      "start_ts": 1779225243.5834515,
-      "end_ts": 1779225243.5862577,
+      "start_ts": 1779226429.9483626,
+      "end_ts": 1779226429.95114,
       "duration_s": 0.003,
       "cache_hit": false,
       "sub_agent_id": null,
@@ -321,10 +321,10 @@
       "fallback_chain_walked": [],
       "error": null,
       "extra": {
-        "shared_versioned_path": "/home/eve/workspaces/shared/images/mvp/2026-05-19-visualizer/demo-20260519T211116.mp4",
+        "shared_versioned_path": "/home/eve/workspaces/shared/images/mvp/2026-05-19-visualizer/demo-20260519T213101.mp4",
         "shared_latest_path": "/home/eve/workspaces/shared/images/mvp/2026-05-19-visualizer/demo.mp4",
-        "demo_video_url": "https://mvp.trollefsen.com/media/mvp/2026-05-19-visualizer/demo-20260519T211116.mp4",
-        "run_id": "20260519T211116"
+        "demo_video_url": "https://mvp.trollefsen.com/media/mvp/2026-05-19-visualizer/demo-20260519T213101.mp4",
+        "run_id": "20260519T213101"
       }
     }
   ]

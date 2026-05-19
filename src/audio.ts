@@ -146,12 +146,15 @@ export class AudioEngine {
         const { bpm, offset } = await guess(buffer);
         this.beatState.scheduled = { bpm, offset, lastIdx: -1 };
         this.beatState.bpm = bpm;
+        console.info('[visualizer] beat schedule ready bpm=%s offset=%s period=%sms',
+          bpm.toFixed(2), offset.toFixed(3), (60000 / bpm).toFixed(1));
         this.onAnalysisProgress?.('done');
       } catch (e) {
-        console.warn('beat analysis failed, falling back to realtime flux:', e);
+        console.warn('[visualizer] beat analysis failed:', e);
         this.onAnalysisProgress?.('failed');
       }
     } else {
+      console.warn('[visualizer] no AudioBuffer — beat schedule unavailable, flash disabled for file mode');
       this.onAnalysisProgress?.('failed');
     }
   }
@@ -207,26 +210,39 @@ export class AudioEngine {
     rms = Math.sqrt(rms / this.timeFloat.length);
 
     // --- Beat detection ---
+    // Hard split by input type. File mode ONLY uses the pre-computed schedule;
+    // it never runs realtime flux, even if analysis failed (flash stays dark instead
+    // of false-triggering on hi-hats / vocals). Mic mode is the only flux path.
     let beat = false;
     let flux = 0;
     const scheduled = this.beatState.scheduled;
-    if (scheduled && this.audioEl && this.inputType === 'file') {
-      // Scheduled (file) path: trigger based on pre-computed {bpm, offset}.
-      const outputLatency = (this.ctx.outputLatency || 0) + (this.ctx.baseLatency || 0);
-      const t = this.audioEl.currentTime - outputLatency;
-      const period = 60 / scheduled.bpm;
-      const elapsed = t - scheduled.offset;
-      if (elapsed >= 0 && this.playing) {
-        const idx = Math.floor(elapsed / period);
-        if (idx > scheduled.lastIdx) {
-          scheduled.lastIdx = idx;
-          beat = true;
+    if (this.inputType === 'file') {
+      if (scheduled && this.audioEl && this.playing) {
+        // Sign convention (per Daniel): trigger flash slightly AHEAD of the scheduled audio
+        // position so the user sees the flash at the same wall-clock instant they hear the beat.
+        const latency = (this.ctx.outputLatency || 0) + (this.ctx.baseLatency || 0);
+        const t = this.audioEl.currentTime + latency;
+        const period = 60 / scheduled.bpm;
+        const elapsed = t - scheduled.offset;
+        if (elapsed >= 0) {
+          const idx = Math.floor(elapsed / period);
+          if (idx > scheduled.lastIdx) {
+            scheduled.lastIdx = idx;
+            beat = true;
+            if ((idx & 7) === 0) {
+              console.debug('[visualizer] beat idx=%d audioT=%s nextAt=%s latency=%sms',
+                idx, this.audioEl.currentTime.toFixed(3),
+                (scheduled.offset + (idx + 1) * period).toFixed(3),
+                (latency * 1000).toFixed(1));
+            }
+          }
+        } else if (elapsed < -0.2) {
+          // looped — reset
+          scheduled.lastIdx = -1;
         }
-      } else if (elapsed < -0.1) {
-        // looped — reset
-        scheduled.lastIdx = -1;
       }
-    } else {
+      // else: schedule not ready / unavailable → no flash this frame. Bars still animate.
+    } else if (this.inputType === 'mic') {
       // Mic (realtime) path: bass-banded spectral flux on the snappy beatAnalyser.
       if (!this.beatState.prevSpectrum) this.beatState.prevSpectrum = new Float32Array(beatBins);
       const prev = this.beatState.prevSpectrum;
@@ -252,9 +268,6 @@ export class AudioEngine {
       if (flux > threshold && now - this.beatState.lastBeatAt > BEAT_REFRACTORY_MS) {
         beat = true;
         this.beatState.lastBeatAt = now;
-        // Estimate BPM from inter-beat intervals
-        const interval = now - (this.beatState.lastBeatAt - (now - this.beatState.lastBeatAt));
-        void interval;
       }
     }
 

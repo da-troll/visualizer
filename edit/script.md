@@ -1,7 +1,7 @@
-Making audio feel alive usually means bouncing between clunky visualizer apps and export tools. Visualizer puts that in one standalone web app: drop in a track or open the mic, and it starts moving immediately.
+Turning sound into something worth sharing usually means bouncing between audio tools, screen recorders, and editors. Visualizer keeps that in one place: drop in a track or open the mic, and it starts drawing motion immediately.
 
-It gives you seven canvas2D modes, from clean bars and waveform views to radial, spectrogram, constellation, and particles, so you can match the motion to the sound instead of settling for one look. Beat detection keeps it grounded with a live BPM readout, and the stem-band sliders let you decide whether the visuals should listen harder to the sub, bass, mids, or treble.
+It has seven canvas2D modes, so you can go from clean bars and waveform views to radial, spectrogram, Lissajous, constellation, or particles depending on the feel you want. The beat detection keeps the motion honest, with a live BPM readout, and the stem-band sliders let you push sub, bass, mid, or treble harder so the visuals react to the part of the sound you actually care about. Palettes shift smoothly instead of snapping, including a chromatic mode that pulls hue from frequency, so the whole thing feels alive rather than preset.
 
-A nice touch is how flexible it is once it’s already working: ID3 tags and album art come through when you load a file, palettes shift smoothly instead of snapping, and fullscreen keeps the focus on the motion. When you’ve got something worth keeping, it exports a PNG or a 5-second 9:16 WebM loop in one click.
+If you’re working from a file, Visualizer also pulls in title, artist, and album art automatically. And when it looks right, you can grab a PNG or export a five-second 9:16 WebM loop in one click.
 
-So instead of just hearing a track, you can shape it into something visible, shareable, and ready to use.
+So instead of describing the energy of a track, you can show it.
