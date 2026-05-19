@@ -1,16 +1,9 @@
 // Web Audio engine.
 //
-// Design notes (post-Daniel-feedback):
-//   • Two AnalyserNodes share the same source — `displayAnalyser` (smoothing 0.8)
-//     for visually pleasing bars/waves, `beatAnalyser` (smoothing 0.08) for snappy
-//     transient detection.
-//   • fftSize 512 → ~11.6 ms FFT-window lag at 44.1 kHz (was 46 ms at 2048).
-//   • File playback: pre-analyse the AudioBuffer with web-audio-beat-detector
-//     `guess()` to recover {bpm, offset}. During playback, schedule beat flashes
-//     against the audio element's currentTime (compensated for outputLatency).
-//   • Mic input: no pre-buffer available — fall back to bass-band spectral flux.
-
-import { guess } from 'web-audio-beat-detector';
+// Beat detection (post-Daniel-simplification): direct bass-bin onset detection
+// on the display analyser. Same data that drives the leftmost bars also drives
+// the flash — by construction the flash cannot trigger from hi-hats and is
+// guaranteed in-sync with what's painted.
 
 export type InputSource = 'idle' | 'file' | 'mic';
 
@@ -28,35 +21,20 @@ export interface AudioFrame {
   flux: number;
 }
 
-const FFT_SIZE = 2048;        // display analyser — 21.5 Hz bins (sampleRate/fftSize) for usable low-end resolution
-const BEAT_FFT_SIZE = 512;    // beat analyser — keep low latency (~11.6 ms) for transient detection
+const FFT_SIZE = 2048;             // 21.5 Hz bins at 44.1 kHz
 const DISPLAY_SMOOTHING = 0.8;
-const BEAT_SMOOTHING = 0.08;
-const DISPLAY_MIN_DB = -85;   // audioMotion-analyzer production defaults — 60 dB dynamic range
-const DISPLAY_MAX_DB = -25;   // typical music peaks at -6 to 0 dBFS; ceiling at -25 prevents pinning
-const FLUX_HISTORY_LEN = 50;
-const BEAT_REFRACTORY_MS = 250;
-const BEAT_BAND_LO_HZ = 30;
-const BEAT_BAND_HI_HZ = 200;
-
-interface BeatState {
-  // real-time (mic) path
-  prevSpectrum: Float32Array | null;
-  fluxHistory: number[];
-  lastBeatAt: number;
-  // file (scheduled) path
-  scheduled: { bpm: number; offset: number; lastIdx: number } | null;
-  // ctx.currentTime-relative playback origin. ctxPlayStart = ctx.currentTime when audio was at position 0.
-  // null while paused or before first play. Re-synced on play/seeked.
-  ctxPlayStart: number | null;
-  // shared
-  bpm: number;
-}
+const DISPLAY_MIN_DB = -85;
+const DISPLAY_MAX_DB = -25;
+// Bass onset thresholds — bins 3..9 cover ~64–215 Hz at 44.1 kHz / fftSize 2048.
+const BASS_BIN_LO = 3;
+const BASS_BIN_HI = 10;
+const BASS_ENERGY_TRIG = 0.55;
+const BASS_RISE_TRIG = 0.12;
+const REFRACTORY_MS = 250;
 
 export class AudioEngine {
   ctx: AudioContext | null = null;
   displayAnalyser: AnalyserNode | null = null;
-  beatAnalyser: AnalyserNode | null = null;
   gain: GainNode | null = null;
   hpf: BiquadFilterNode | null = null;
   source: AudioBufferSourceNode | MediaStreamAudioSourceNode | MediaElementAudioSourceNode | null = null;
@@ -69,9 +47,12 @@ export class AudioEngine {
   freq = new Uint8Array(FFT_SIZE / 2);
   time = new Uint8Array(FFT_SIZE);
   timeFloat = new Float32Array(FFT_SIZE);
-  beatFreq = new Uint8Array(BEAT_FFT_SIZE / 2);
-  onAnalysisProgress: ((stage: 'decoding' | 'analyzing' | 'done' | 'failed') => void) | null = null;
-  beatState: BeatState = { prevSpectrum: null, fluxHistory: [], lastBeatAt: 0, scheduled: null, ctxPlayStart: null, bpm: 0 };
+
+  // Bass-onset beat detector state
+  private prevBassEnergy = 0;
+  private refractoryUntil = 0;
+  private bpmBeatTimes: number[] = [];
+  private bpmEstimate = 0;
 
   ensureContext() {
     if (!this.ctx) {
@@ -86,13 +67,6 @@ export class AudioEngine {
       this.displayAnalyser.minDecibels = DISPLAY_MIN_DB;
       this.displayAnalyser.maxDecibels = DISPLAY_MAX_DB;
 
-      this.beatAnalyser = this.ctx.createAnalyser();
-      this.beatAnalyser.fftSize = BEAT_FFT_SIZE;
-      this.beatAnalyser.smoothingTimeConstant = BEAT_SMOOTHING;
-      this.beatAnalyser.minDecibels = -90;
-      this.beatAnalyser.maxDecibels = -10;
-
-      // 30 Hz high-pass — kills DC offset + sub-bass rumble that pins bin 1 active.
       this.hpf = this.ctx.createBiquadFilter();
       this.hpf.type = 'highpass';
       this.hpf.frequency.value = 30;
@@ -100,7 +74,6 @@ export class AudioEngine {
 
       this.gain.connect(this.hpf);
       this.hpf.connect(this.displayAnalyser);
-      this.gain.connect(this.beatAnalyser);  // beat path bypasses HPF — it WANTS the kick fundamentals
       this.displayAnalyser.connect(this.ctx.destination);
     }
   }
@@ -112,10 +85,8 @@ export class AudioEngine {
 
   setMicSensitivity(v: number) {
     this.micSensitivity = v;
-    if (this.inputType === 'mic') {
-      const min = DISPLAY_MIN_DB + (1 - v) * 30;
-      if (this.displayAnalyser) this.displayAnalyser.minDecibels = min;
-      if (this.beatAnalyser) this.beatAnalyser.minDecibels = -90 + (1 - v) * 40;
+    if (this.inputType === 'mic' && this.displayAnalyser) {
+      this.displayAnalyser.minDecibels = DISPLAY_MIN_DB + (1 - v) * 30;
     }
   }
 
@@ -124,76 +95,33 @@ export class AudioEngine {
     if (!this.ctx || !this.gain) return;
     await this.stop();
 
-    this.beatState = { prevSpectrum: null, fluxHistory: [], lastBeatAt: 0, scheduled: null, ctxPlayStart: null, bpm: 0 };
-
-    // Decode buffer for pre-analysis BEFORE attaching MediaElementSource.
-    // (decodeAudioData consumes a fresh ArrayBuffer copy — does not interfere with the <audio> element.)
-    this.onAnalysisProgress?.('decoding');
-    let buffer: AudioBuffer | null = null;
-    try {
-      const arr = await file.arrayBuffer();
-      buffer = await this.ctx.decodeAudioData(arr.slice(0));
-    } catch (e) {
-      console.warn('decodeAudioData failed:', e);
-    }
-
     const url = URL.createObjectURL(file);
     const el = new Audio();
     el.src = url;
     el.crossOrigin = 'anonymous';
     el.loop = true;
     this.audioEl = el;
-    // Sync ctx-time playback origin on every play/seek so audioCtx.currentTime
-    // can be used as a sample-accurate clock for beat scheduling.
-    const syncOrigin = () => {
-      if (this.ctx) this.beatState.ctxPlayStart = this.ctx.currentTime - el.currentTime;
-    };
-    el.addEventListener('play', syncOrigin);
-    el.addEventListener('seeked', syncOrigin);
-    el.addEventListener('pause', () => { this.beatState.ctxPlayStart = null; });
-    el.addEventListener('ended', () => { this.beatState.ctxPlayStart = null; });
     const node = this.ctx.createMediaElementSource(el);
     node.connect(this.gain);
     this.source = node;
     this.inputType = 'file';
     if (this.displayAnalyser) this.displayAnalyser.minDecibels = DISPLAY_MIN_DB;
-    if (this.beatAnalyser) this.beatAnalyser.minDecibels = -90;
     await this.ctx.resume();
     await el.play();
     this.playing = true;
-
-    if (buffer) {
-      this.onAnalysisProgress?.('analyzing');
-      try {
-        const { bpm, offset } = await guess(buffer);
-        this.beatState.scheduled = { bpm, offset, lastIdx: -1 };
-        this.beatState.bpm = bpm;
-        console.info('[visualizer] beat schedule ready bpm=%s offset=%s period=%sms',
-          bpm.toFixed(2), offset.toFixed(3), (60000 / bpm).toFixed(1));
-        this.onAnalysisProgress?.('done');
-      } catch (e) {
-        console.warn('[visualizer] beat analysis failed:', e);
-        this.onAnalysisProgress?.('failed');
-      }
-    } else {
-      console.warn('[visualizer] no AudioBuffer — beat schedule unavailable, flash disabled for file mode');
-      this.onAnalysisProgress?.('failed');
-    }
   }
 
   async startMic() {
     this.ensureContext();
-    if (!this.ctx || !this.gain || !this.displayAnalyser || !this.beatAnalyser) return;
+    if (!this.ctx || !this.gain || !this.displayAnalyser || !this.hpf) return;
     await this.stop();
     const stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false } });
     this.micStream = stream;
     const node = this.ctx.createMediaStreamSource(stream);
-    // Don't route mic to destination — would create feedback.
-    if (this.hpf) node.connect(this.hpf); else node.connect(this.displayAnalyser);
-    node.connect(this.beatAnalyser);
+    // Mic mode bypasses gain → destination (avoids feedback) but still flows through HPF + analyser.
+    node.connect(this.hpf);
     this.source = node;
     this.inputType = 'mic';
-    this.beatState.scheduled = null;
     this.setMicSensitivity(this.micSensitivity);
     await this.ctx.resume();
     this.playing = true;
@@ -212,90 +140,57 @@ export class AudioEngine {
     if (this.source) { try { this.source.disconnect(); } catch {} this.source = null; }
     this.inputType = 'idle';
     this.playing = false;
-    this.beatState = { prevSpectrum: null, fluxHistory: [], lastBeatAt: 0, scheduled: null, ctxPlayStart: null, bpm: 0 };
+    this.prevBassEnergy = 0;
+    this.refractoryUntil = 0;
+    this.bpmBeatTimes = [];
+    this.bpmEstimate = 0;
   }
 
   sample(now: number): AudioFrame | null {
-    if (!this.displayAnalyser || !this.beatAnalyser || !this.ctx) return null;
+    if (!this.displayAnalyser || !this.ctx) return null;
     this.displayAnalyser.getByteFrequencyData(this.freq);
     this.displayAnalyser.getByteTimeDomainData(this.time);
     this.displayAnalyser.getFloatTimeDomainData(this.timeFloat);
-    this.beatAnalyser.getByteFrequencyData(this.beatFreq);
 
     const sampleRate = this.ctx.sampleRate;
     const dispBins = this.freq.length;
-    const beatBins = this.beatFreq.length;
     const nyquist = sampleRate / 2;
 
     let rms = 0;
     for (let i = 0; i < this.timeFloat.length; i++) rms += this.timeFloat[i] * this.timeFloat[i];
     rms = Math.sqrt(rms / this.timeFloat.length);
 
-    // --- Beat detection ---
-    // Hard split by input type. File mode ONLY uses the pre-computed schedule;
-    // it never runs realtime flux, even if analysis failed (flash stays dark instead
-    // of false-triggering on hi-hats / vocals). Mic mode is the only flux path.
+    // --- Bass-onset beat detection ---
+    // Same bass bins that drive the leftmost bars; no separate analyser, no schedule.
+    let bassMax = 0;
+    for (let i = BASS_BIN_LO; i < BASS_BIN_HI; i++) {
+      if (this.freq[i] > bassMax) bassMax = this.freq[i];
+    }
+    const bassEnergy = bassMax / 255;
+    const bassRise = bassEnergy - this.prevBassEnergy;
+    this.prevBassEnergy = bassEnergy;
+
     let beat = false;
-    let flux = 0;
-    const scheduled = this.beatState.scheduled;
-    if (this.inputType === 'file') {
-      // File mode: schedule-only. Flux path is unreachable from here — branch is hoisted.
-      if (scheduled && this.audioEl && this.playing && this.beatState.ctxPlayStart !== null) {
-        // Sample-accurate playback clock: ctx.currentTime - ctxPlayStart.
-        // Re-synced on every play/seeked event so HTMLMediaElement seek doesn't drift the clock.
-        const playbackTime = this.ctx.currentTime - this.beatState.ctxPlayStart;
-        // Pre-advance by one rAF frame (16 ms) + baseLatency + outputLatency so the
-        // flash hits the screen at the same wall-clock instant the kick hits the speaker.
-        const lookahead = 0.016 + (this.ctx.baseLatency || 0) + (this.ctx.outputLatency || 0);
-        const t = playbackTime + lookahead;
-        const period = 60 / scheduled.bpm;
-        const elapsed = t - scheduled.offset;
-        if (elapsed >= 0) {
-          const idx = Math.floor(elapsed / period);
-          if (idx > scheduled.lastIdx) {
-            scheduled.lastIdx = idx;
-            beat = true;
-            console.log('[viz] SCHEDULE fire idx=%d playbackT=%s lookahead=%sms ctxT=%s',
-              idx, playbackTime.toFixed(3), (lookahead * 1000).toFixed(1),
-              this.ctx.currentTime.toFixed(3));
-          }
-        } else if (elapsed < -0.2) {
-          scheduled.lastIdx = -1; // looped — reset
+    if (this.playing && bassEnergy > BASS_ENERGY_TRIG && bassRise > BASS_RISE_TRIG && now > this.refractoryUntil) {
+      beat = true;
+      this.refractoryUntil = now + REFRACTORY_MS;
+      this.bpmBeatTimes.push(now);
+      if (this.bpmBeatTimes.length > 9) this.bpmBeatTimes.shift();
+      if (this.bpmBeatTimes.length >= 3) {
+        const intervals: number[] = [];
+        for (let i = 1; i < this.bpmBeatTimes.length; i++) intervals.push(this.bpmBeatTimes[i] - this.bpmBeatTimes[i - 1]);
+        intervals.sort((a, b) => a - b);
+        const median = intervals[Math.floor(intervals.length / 2)];
+        if (median > 0) {
+          let bpm = 60000 / median;
+          while (bpm < 60) bpm *= 2;
+          while (bpm > 200) bpm /= 2;
+          this.bpmEstimate = this.bpmEstimate ? this.bpmEstimate * 0.7 + bpm * 0.3 : bpm;
         }
-      }
-      // schedule not ready / not playing → no flash this frame. Bars still animate.
-    } else if (this.inputType === 'mic') {
-      // Mic (realtime) path: bass-banded spectral flux on the snappy beatAnalyser.
-      if (!this.beatState.prevSpectrum) this.beatState.prevSpectrum = new Float32Array(beatBins);
-      const prev = this.beatState.prevSpectrum;
-      const loBin = Math.max(1, Math.floor((BEAT_BAND_LO_HZ / nyquist) * beatBins));
-      const hiBin = Math.min(beatBins, Math.ceil((BEAT_BAND_HI_HZ / nyquist) * beatBins));
-      for (let i = 0; i < beatBins; i++) {
-        if (i >= loBin && i < hiBin) {
-          const diff = this.beatFreq[i] - prev[i];
-          if (diff > 0) flux += diff;
-        }
-        prev[i] = this.beatFreq[i];
-      }
-      flux = flux / Math.max(1, hiBin - loBin);
-
-      const hist = this.beatState.fluxHistory;
-      hist.push(flux);
-      if (hist.length > FLUX_HISTORY_LEN) hist.shift();
-      let avg = 0;
-      for (let i = 0; i < hist.length; i++) avg += hist[i];
-      avg = avg / Math.max(1, hist.length);
-      const threshold = avg * 1.55 + 1.2;
-
-      if (flux > threshold && now - this.beatState.lastBeatAt > BEAT_REFRACTORY_MS) {
-        beat = true;
-        this.beatState.lastBeatAt = now;
-        console.log('[viz] FLUX fire inputType=%s flux=%s threshold=%s',
-          this.inputType, flux.toFixed(2), threshold.toFixed(2));
       }
     }
 
-    // --- Spectral centroid (display analyser) ---
+    // --- Spectral centroid ---
     let weighted = 0, total = 0;
     for (let i = 0; i < dispBins; i++) {
       const mag = this.freq[i];
@@ -320,7 +215,7 @@ export class AudioEngine {
       sampleRate,
       fftSize: FFT_SIZE,
       beat,
-      bpm: this.beatState.bpm,
+      bpm: this.bpmEstimate,
       centroidHz,
       bands: {
         sub: bandEnergy(20, 60),
@@ -329,7 +224,7 @@ export class AudioEngine {
         treble: bandEnergy(4000, 16000),
       },
       rms,
-      flux,
+      flux: bassRise,
     };
   }
 

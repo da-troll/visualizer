@@ -35,8 +35,7 @@ function App() {
   const [mode, setMode] = useState<ModeId>('bars');
   const [paletteId, setPaletteId] = useState<string>('trollspace');
   const [aspect, setAspect] = useState<Aspect>('16:9');
-  const [response, setResponse] = useState(0.8); // display-analyser smoothing; beat detection uses its own snappy analyser
-  const [analyzing, setAnalyzing] = useState<null | 'decoding' | 'analyzing'>(null);
+  const [response, setResponse] = useState(0.8); // display-analyser smoothing — also feeds bass-onset beat detection
   const [bandScale, setBandScale] = useState({ ...DEFAULT_BAND_SCALE });
   const [bandsOpen, setBandsOpen] = useState(false);
   const [meta, setMeta] = useState<TrackMeta | null>(null);
@@ -187,10 +186,6 @@ function App() {
 
   const loadFile = useCallback(async (file: File) => {
     try {
-      engine.onAnalysisProgress = (stage) => {
-        if (stage === 'decoding' || stage === 'analyzing') setAnalyzing(stage);
-        else setAnalyzing(null);
-      };
       await engine.loadFile(file);
       setPlaying(true);
       setInputType('file');
@@ -443,14 +438,6 @@ function App() {
               <h1>Visualizer</h1>
               <p>Drag an audio file anywhere · or <span className="accent">click ↓ Load</span></p>
               <p style={{ marginTop: 8, fontSize: 11 }}>or use the microphone</p>
-            </div>
-          )}
-          {analyzing && (
-            <div className="dropzone-hint" style={{ background: 'rgba(15,17,23,0.55)' }}>
-              <h1 style={{ fontSize: 'clamp(18px, 2.4vw, 28px)' }}>
-                {analyzing === 'decoding' ? 'Decoding audio…' : 'Analysing beats…'}
-              </h1>
-              <p style={{ fontSize: 12 }} className="accent">tempo + first-beat offset via OfflineAudioContext</p>
             </div>
           )}
           {recordingProgress !== null && (
