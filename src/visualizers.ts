@@ -32,9 +32,6 @@ function bandMultiplier(hz: number, bs: RenderContext['bandScale']): number {
   return bs.treble;
 }
 
-// Mel scale helpers
-function hzToMel(hz: number): number { return 2595 * Math.log10(1 + hz / 700); }
-function melToHz(mel: number): number { return 700 * (Math.pow(10, mel / 2595) - 1); }
 
 export function clearStage(rc: RenderContext) {
   const { ctx, w, h, palette, beatFlash } = rc;
@@ -50,24 +47,26 @@ export function drawBars(rc: RenderContext) {
   const { ctx, w, h, palette, frame } = rc;
   const bins = frame.freq;
   const nyquist = frame.sampleRate / 2;
+  const binHz = nyquist / bins.length;
   const numBars = 64;
-  const melLo = hzToMel(40);
-  const melHi = hzToMel(Math.min(16000, nyquist));
+  const F_LO = 30;
+  const F_HI = Math.min(16000, nyquist);
+  const ratio = F_HI / F_LO;
   const barWPad = w * 0.05;
   const usableW = w - barWPad * 2;
   const barW = usableW / numBars * 0.78;
   const gap = usableW / numBars * 0.22;
 
   for (let i = 0; i < numBars; i++) {
-    const mel0 = melLo + (melHi - melLo) * (i / numBars);
-    const mel1 = melLo + (melHi - melLo) * ((i + 1) / numBars);
-    const hz0 = melToHz(mel0);
-    const hz1 = melToHz(mel1);
-    const bin0 = Math.max(0, Math.floor((hz0 / nyquist) * bins.length));
-    const bin1 = Math.min(bins.length, Math.max(bin0 + 1, Math.ceil((hz1 / nyquist) * bins.length)));
-    let sum = 0;
-    for (let b = bin0; b < bin1; b++) sum += bins[b];
-    const amp = (sum / (bin1 - bin0)) / 255;
+    // Log-spaced frequency grouping — each bar covers a constant ratio of the spectrum.
+    const hz0 = F_LO * Math.pow(ratio, i / numBars);
+    const hz1 = F_LO * Math.pow(ratio, (i + 1) / numBars);
+    const bin0 = Math.max(1, Math.floor(hz0 / binHz)); // skip bin 0 (DC garbage)
+    const bin1 = Math.min(bins.length, Math.max(bin0 + 1, Math.ceil(hz1 / binHz)));
+    // MAX (not average) across the bin range — average washes out transients in wide-spanning bars.
+    let max = 0;
+    for (let b = bin0; b < bin1; b++) if (bins[b] > max) max = bins[b];
+    const amp = max / 255;
     const mul = bandMultiplier((hz0 + hz1) / 2, rc.bandScale);
     const hh = Math.pow(amp, 0.9) * mul * h * 0.78;
 

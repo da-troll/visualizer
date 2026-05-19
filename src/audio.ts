@@ -28,10 +28,12 @@ export interface AudioFrame {
   flux: number;
 }
 
-const FFT_SIZE = 512;
-const BEAT_FFT_SIZE = 512;
+const FFT_SIZE = 2048;        // display analyser — 21.5 Hz bins (sampleRate/fftSize) for usable low-end resolution
+const BEAT_FFT_SIZE = 512;    // beat analyser — keep low latency (~11.6 ms) for transient detection
 const DISPLAY_SMOOTHING = 0.8;
 const BEAT_SMOOTHING = 0.08;
+const DISPLAY_MIN_DB = -85;   // audioMotion-analyzer production defaults — 60 dB dynamic range
+const DISPLAY_MAX_DB = -25;   // typical music peaks at -6 to 0 dBFS; ceiling at -25 prevents pinning
 const FLUX_HISTORY_LEN = 50;
 const BEAT_REFRACTORY_MS = 250;
 const BEAT_BAND_LO_HZ = 30;
@@ -53,6 +55,7 @@ export class AudioEngine {
   displayAnalyser: AnalyserNode | null = null;
   beatAnalyser: AnalyserNode | null = null;
   gain: GainNode | null = null;
+  hpf: BiquadFilterNode | null = null;
   source: AudioBufferSourceNode | MediaStreamAudioSourceNode | MediaElementAudioSourceNode | null = null;
   audioEl: HTMLAudioElement | null = null;
   micStream: MediaStream | null = null;
@@ -77,8 +80,8 @@ export class AudioEngine {
       this.displayAnalyser = this.ctx.createAnalyser();
       this.displayAnalyser.fftSize = FFT_SIZE;
       this.displayAnalyser.smoothingTimeConstant = this.smoothing;
-      this.displayAnalyser.minDecibels = -90;
-      this.displayAnalyser.maxDecibels = -10;
+      this.displayAnalyser.minDecibels = DISPLAY_MIN_DB;
+      this.displayAnalyser.maxDecibels = DISPLAY_MAX_DB;
 
       this.beatAnalyser = this.ctx.createAnalyser();
       this.beatAnalyser.fftSize = BEAT_FFT_SIZE;
@@ -86,8 +89,15 @@ export class AudioEngine {
       this.beatAnalyser.minDecibels = -90;
       this.beatAnalyser.maxDecibels = -10;
 
-      this.gain.connect(this.displayAnalyser);
-      this.gain.connect(this.beatAnalyser);
+      // 30 Hz high-pass — kills DC offset + sub-bass rumble that pins bin 1 active.
+      this.hpf = this.ctx.createBiquadFilter();
+      this.hpf.type = 'highpass';
+      this.hpf.frequency.value = 30;
+      this.hpf.Q.value = 0.7;
+
+      this.gain.connect(this.hpf);
+      this.hpf.connect(this.displayAnalyser);
+      this.gain.connect(this.beatAnalyser);  // beat path bypasses HPF — it WANTS the kick fundamentals
       this.displayAnalyser.connect(this.ctx.destination);
     }
   }
@@ -100,9 +110,9 @@ export class AudioEngine {
   setMicSensitivity(v: number) {
     this.micSensitivity = v;
     if (this.inputType === 'mic') {
-      const min = -90 + (1 - v) * 40;
+      const min = DISPLAY_MIN_DB + (1 - v) * 30;
       if (this.displayAnalyser) this.displayAnalyser.minDecibels = min;
-      if (this.beatAnalyser) this.beatAnalyser.minDecibels = min;
+      if (this.beatAnalyser) this.beatAnalyser.minDecibels = -90 + (1 - v) * 40;
     }
   }
 
@@ -134,7 +144,7 @@ export class AudioEngine {
     node.connect(this.gain);
     this.source = node;
     this.inputType = 'file';
-    if (this.displayAnalyser) this.displayAnalyser.minDecibels = -90;
+    if (this.displayAnalyser) this.displayAnalyser.minDecibels = DISPLAY_MIN_DB;
     if (this.beatAnalyser) this.beatAnalyser.minDecibels = -90;
     await this.ctx.resume();
     await el.play();
@@ -167,7 +177,7 @@ export class AudioEngine {
     this.micStream = stream;
     const node = this.ctx.createMediaStreamSource(stream);
     // Don't route mic to destination — would create feedback.
-    node.connect(this.displayAnalyser);
+    if (this.hpf) node.connect(this.hpf); else node.connect(this.displayAnalyser);
     node.connect(this.beatAnalyser);
     this.source = node;
     this.inputType = 'mic';
