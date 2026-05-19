@@ -1,23 +1,12 @@
-[generate-mvp-demo] starting at 2026-05-19T20:46:53+00:00
+[generate-mvp-demo] starting at 2026-05-19T21:06:58+00:00
 [generate-mvp-demo] project: /home/eve/projects/nightly-mvps/2026-05-19-visualizer
 [generate-mvp-demo] extra args: --regen-scenes
-click('button:nth-of-type(18)') failed: Locator.click: Timeout 5000ms exceeded.
-Call log:
-  - waiting for locator("button:nth-of-type(18)").first
-
-type('input[type="range"]') failed: Locator.fill: Error: Malformed value
-Call log:
-  - waiting for locator("input[type=\"range\"]").first
-    - locator resolved to <input min="0.4" max="0.95" step="0.01" value="0.5" type="range"/>
-    - fill("")
-  - attempting fill action
-    - waiting for element to be visible, enabled and editable
-
+playwright produced 2 webm files — concatenating
 {
   "project": "2026-05-19-visualizer",
   "demo_path": "/home/eve/projects/nightly-mvps/2026-05-19-visualizer/edit/demo.mp4",
-  "shared_path": "/home/eve/workspaces/shared/images/mvp/2026-05-19-visualizer/demo-20260519T204653.mp4",
-  "demo_video_url": "https://mvp.trollefsen.com/media/mvp/2026-05-19-visualizer/demo-20260519T204653.mp4",
+  "shared_path": "/home/eve/workspaces/shared/images/mvp/2026-05-19-visualizer/demo-20260519T210659.mp4",
+  "demo_video_url": "https://mvp.trollefsen.com/media/mvp/2026-05-19-visualizer/demo-20260519T210659.mp4",
   "stages": [
     "preflight",
     "auth_handshake",
@@ -34,6 +23,6 @@ Call log:
   ],
   "log_path": "/home/eve/projects/nightly-mvps/2026-05-19-visualizer/edit/pipeline.log.json"
 }
-[generate-mvp-demo] orchestrator exit: 0 at 2026-05-19T20:50:26+00:00
-[generate-mvp-demo] faststart applied to /home/eve/workspaces/shared/images/mvp/2026-05-19-visualizer/demo-20260519T204653.mp4
-DEMO_R2_OK url=https://clawdash.storage.trollefsen.com/mvp/2026-05-19-visualizer/demo-20260519T204653.mp4
+[generate-mvp-demo] orchestrator exit: 0 at 2026-05-19T21:10:01+00:00
+[generate-mvp-demo] faststart applied to /home/eve/workspaces/shared/images/mvp/2026-05-19-visualizer/demo-20260519T210659.mp4
+DEMO_R2_OK url=https://clawdash.storage.trollefsen.com/mvp/2026-05-19-visualizer/demo-20260519T210659.mp4

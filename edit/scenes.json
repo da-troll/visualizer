@@ -1,87 +1,86 @@
 {
   "version": 1,
-  "generated_at": "2026-05-19T20:47:15+00:00",
+  "generated_at": "2026-05-19T21:07:25+00:00",
   "live_url": "https://mvp.trollefsen.com/2026-05-19-visualizer/",
-  "estimated_duration_s": 45.5,
+  "estimated_duration_s": 45.0,
   "scenes": [
     {
-      "name": "land on visualizer",
+      "name": "Land on visualizer",
       "action": "wait",
       "ms": 4000,
-      "note": "Let the viewer take in the dark stage, centered title, and the control bar with modes, palettes, aspect ratios, export buttons, and mic input."
+      "note": "Hold on the default Bars mode and dark stage so the viewer orients to the product layout."
     },
     {
-      "name": "start live input",
+      "name": "Switch to Wave mode",
       "action": "click",
-      "selector": "button.icon-btn:nth-of-type(3)",
-      "ms_after": 4000,
-      "note": "Enable microphone input to bring the visualizer to life without relying on a file picker."
+      "selector": "button:has-text(\"Wave\")",
+      "ms_after": 3500,
+      "note": "Start the journey by showing that visual modes are instantly switchable."
     },
     {
-      "name": "observe mic activation",
+      "name": "Observe wave mode",
       "action": "wait",
       "ms": 4000,
-      "note": "Notice the canvas begin reacting and the interface shift from idle to live audio visualization."
+      "note": "Notice the active mode changes while the large canvas remains the focus."
     },
     {
-      "name": "switch to radial mode",
+      "name": "Switch to Spectrogram",
       "action": "click",
-      "selector": "button:nth-of-type(4)",
+      "selector": "button:has-text(\"Spectrogram\")",
       "ms_after": 3500,
-      "note": "Move from the default Bars view into a more dramatic circular composition."
+      "note": "Show a second mode to communicate range across the seven visualizers."
     },
     {
-      "name": "observe radial motion",
+      "name": "Observe spectrogram option",
       "action": "wait",
       "ms": 4000,
-      "note": "Notice how the visual response wraps around the center and feels more immersive."
+      "note": "Notice how the mode bar makes rapid experimentation easy."
     },
     {
-      "name": "change palette",
+      "name": "Switch to Radial",
       "action": "click",
-      "selector": "button.palette-chip:nth-of-type(3)",
+      "selector": "button:has-text(\"Radial\")",
       "ms_after": 3500,
-      "note": "Switch to another palette to show the instant color transformation across the active visualization."
+      "note": "Move into a more stylized layout to vary the visual rhythm of the demo."
     },
     {
-      "name": "observe palette transition",
+      "name": "Observe radial mode",
       "action": "wait",
       "ms": 4000,
-      "note": "Notice the smooth palette lerp rather than a harsh color cut."
+      "note": "Notice the one-click mode switching without leaving the main stage."
     },
     {
-      "name": "switch to portrait export ratio",
+      "name": "Change palette",
       "action": "click",
-      "selector": "button:nth-of-type(18)",
+      "selector": ".palette-chip:nth-child(4)",
       "ms_after": 3500,
-      "note": "Change the canvas framing to 9:16 to demonstrate social-ready composition."
+      "note": "Demonstrate palette personalization using one of the visible color chips."
     },
     {
-      "name": "observe 9:16 framing",
+      "name": "Observe palette transition",
       "action": "wait",
       "ms": 4000,
-      "note": "Notice the stage recompose into a tall portrait layout suitable for loops and short-form video."
+      "note": "Notice the color theme change across the interface and canvas area."
     },
     {
-      "name": "open particles mode",
+      "name": "Switch aspect to square",
       "action": "click",
-      "selector": "button:nth-of-type(7)",
+      "selector": "button:has-text(\"1:1\")",
       "ms_after": 3500,
-      "note": "Show a second visual style with more motion and texture."
+      "note": "Show that the stage can be reframed for different output formats."
     },
     {
-      "name": "observe particles detail",
+      "name": "Observe square framing",
       "action": "wait",
       "ms": 4000,
-      "note": "Notice the denser, more atmospheric particle behavior reacting to incoming sound."
+      "note": "Notice the aspect-ratio controls reshape the canvas presentation instantly."
     },
     {
-      "name": "adjust response sensitivity",
-      "action": "fill",
-      "selector": "input[type=\"range\"]",
-      "text": "0.85",
+      "name": "Switch aspect to vertical",
+      "action": "click",
+      "selector": "button:has-text(\"9:16\")",
       "ms_after": 3500,
-      "note": "Increase the response smoothing control to demonstrate tuning how quickly the motion settles."
+      "note": "Highlight the mobile-first export format mentioned in the product description."
     }
   ]
 }

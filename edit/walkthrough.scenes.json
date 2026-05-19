@@ -1,78 +1,78 @@
 {
-  "duration_s": 55.12,
+  "duration_s": 88.68,
   "plan_source": "cached:edit/scenes.json",
   "scenes": [
     {
-      "name": "land on visualizer",
+      "name": "Land on visualizer",
       "start_s": 0.0,
       "end_s": 4.0,
-      "note": "Let the viewer take in the dark stage, centered title, and the control bar with modes, palettes, aspect ratios, export buttons, and mic input."
+      "note": "Hold on the default Bars mode and dark stage so the viewer orients to the product layout."
     },
     {
-      "name": "start live input",
+      "name": "Switch to Wave mode",
       "start_s": 4.0,
-      "end_s": 8.0,
-      "note": "Enable microphone input to bring the visualizer to life without relying on a file picker."
+      "end_s": 7.5,
+      "note": "Start the journey by showing that visual modes are instantly switchable."
     },
     {
-      "name": "observe mic activation",
-      "start_s": 8.0,
-      "end_s": 12.0,
-      "note": "Notice the canvas begin reacting and the interface shift from idle to live audio visualization."
+      "name": "Observe wave mode",
+      "start_s": 7.5,
+      "end_s": 11.5,
+      "note": "Notice the active mode changes while the large canvas remains the focus."
     },
     {
-      "name": "switch to radial mode",
-      "start_s": 12.0,
-      "end_s": 15.5,
-      "note": "Move from the default Bars view into a more dramatic circular composition."
+      "name": "Switch to Spectrogram",
+      "start_s": 11.5,
+      "end_s": 15.0,
+      "note": "Show a second mode to communicate range across the seven visualizers."
     },
     {
-      "name": "observe radial motion",
-      "start_s": 15.5,
-      "end_s": 19.5,
-      "note": "Notice how the visual response wraps around the center and feels more immersive."
+      "name": "Observe spectrogram option",
+      "start_s": 15.0,
+      "end_s": 19.0,
+      "note": "Notice how the mode bar makes rapid experimentation easy."
     },
     {
-      "name": "change palette",
-      "start_s": 19.5,
-      "end_s": 23.0,
-      "note": "Switch to another palette to show the instant color transformation across the active visualization."
+      "name": "Switch to Radial",
+      "start_s": 19.0,
+      "end_s": 22.5,
+      "note": "Move into a more stylized layout to vary the visual rhythm of the demo."
     },
     {
-      "name": "observe palette transition",
-      "start_s": 23.0,
-      "end_s": 27.0,
-      "note": "Notice the smooth palette lerp rather than a harsh color cut."
+      "name": "Observe radial mode",
+      "start_s": 22.5,
+      "end_s": 26.5,
+      "note": "Notice the one-click mode switching without leaving the main stage."
     },
     {
-      "name": "switch to portrait export ratio",
-      "start_s": 27.0,
-      "end_s": 30.5,
-      "note": "Change the canvas framing to 9:16 to demonstrate social-ready composition."
+      "name": "Change palette",
+      "start_s": 26.5,
+      "end_s": 30.0,
+      "note": "Demonstrate palette personalization using one of the visible color chips."
     },
     {
-      "name": "observe 9:16 framing",
-      "start_s": 30.5,
-      "end_s": 34.5,
-      "note": "Notice the stage recompose into a tall portrait layout suitable for loops and short-form video."
+      "name": "Observe palette transition",
+      "start_s": 30.0,
+      "end_s": 34.0,
+      "note": "Notice the color theme change across the interface and canvas area."
     },
     {
-      "name": "open particles mode",
-      "start_s": 34.5,
-      "end_s": 38.0,
-      "note": "Show a second visual style with more motion and texture."
+      "name": "Switch aspect to square",
+      "start_s": 34.0,
+      "end_s": 37.5,
+      "note": "Show that the stage can be reframed for different output formats."
     },
     {
-      "name": "observe particles detail",
-      "start_s": 38.0,
-      "end_s": 42.0,
-      "note": "Notice the denser, more atmospheric particle behavior reacting to incoming sound."
+      "name": "Observe square framing",
+      "start_s": 37.5,
+      "end_s": 41.5,
+      "note": "Notice the aspect-ratio controls reshape the canvas presentation instantly."
     },
     {
-      "name": "adjust response sensitivity",
-      "start_s": 42.0,
-      "end_s": 45.72,
-      "note": "Increase the response smoothing control to demonstrate tuning how quickly the motion settles."
+      "name": "Switch aspect to vertical",
+      "start_s": 41.5,
+      "end_s": 45.0,
+      "note": "Highlight the mobile-first export format mentioned in the product description."
     }
   ]
 }

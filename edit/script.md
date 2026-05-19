@@ -1,7 +1,7 @@
-Getting audio to feel alive usually means bouncing between a player, an editor, and some export tool. Visualizer keeps that in one place: drop in a track or open the mic, and it turns sound into motion immediately.
+Getting audio to look good usually means bouncing between players, plugins, and export tools. Visualizer keeps it in one place: drop in a track or open the mic, and it turns sound into motion across seven canvas2D modes.
 
-What makes it click is that it’s not just one look. You’ve got seven canvas modes, from clean bars and waveforms to radial, constellation, particles, even Lissajous, and the color system reacts with it instead of feeling pasted on. Beat detection keeps a live BPM readout running, while the sub, bass, mid, and treble sliders let you decide what the visuals should listen to most.
+What makes it feel solid is that it’s not just reacting to volume. Beat detection tracks spectral flux, the BPM readout settles into something usable, and the stem-band sliders let you decide whether the visuals should follow the sub, the bass, or the brighter stuff on top. Swap between eight palettes and the colour shifts ease over instead of snapping, so you can keep exploring without breaking the flow.
 
-It also handles the practical stuff without fuss. Drag in an audio file and it pulls the track metadata and album art; switch to microphone input when you want something live; flip aspect ratios or go fullscreen when you need the composition to fit the moment. And when you’ve got a version worth keeping, export a PNG or a clean 9:16 WebM loop in one click.
+If you’re working from files, it pulls in title, artist, and album art automatically. If you’re performing live, the mic input has its own sensitivity control. And when something finally lands, you can grab a PNG or kick out a five-second 9:16 WebM loop in one click.
 
-So instead of wrestling tools, you can shape a sound into something watchable fast enough to use while the idea still feels fresh.
+So instead of fiddling with setup, you get a visual that actually keeps up with the sound and is ready to share.

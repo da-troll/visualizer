@@ -1,13 +1,13 @@
 {
-  "run_id": "20260519T204653",
+  "run_id": "20260519T210659",
   "project_dir": "/home/eve/projects/nightly-mvps/2026-05-19-visualizer",
-  "start_ts": 1779223613.6327076,
+  "start_ts": 1779224819.6431825,
   "stages": [
     {
       "stage_id": "preflight",
-      "start_ts": 1779223613.633011,
-      "end_ts": 1779223620.0058851,
-      "duration_s": 6.373,
+      "start_ts": 1779224819.6433258,
+      "end_ts": 1779224826.242032,
+      "duration_s": 6.599,
       "cache_hit": false,
       "sub_agent_id": null,
       "retry_count": 0,
@@ -17,7 +17,7 @@
       "extra": {
         "ok": true,
         "status_code": 200,
-        "load_ms": 766,
+        "load_ms": 952,
         "title": "Visualizer \u00b7 trollspace",
         "interactive_count": 27,
         "console_errors": [],
@@ -27,9 +27,9 @@
     },
     {
       "stage_id": "auth_handshake",
-      "start_ts": 1779223620.0062797,
-      "end_ts": 1779223620.0074744,
-      "duration_s": 0.001,
+      "start_ts": 1779224826.2423291,
+      "end_ts": 1779224826.2438455,
+      "duration_s": 0.002,
       "cache_hit": false,
       "sub_agent_id": null,
       "retry_count": 0,
@@ -42,9 +42,9 @@
     },
     {
       "stage_id": "plan",
-      "start_ts": 1779223620.007704,
-      "end_ts": 1779223635.6379242,
-      "duration_s": 15.63,
+      "start_ts": 1779224826.2440257,
+      "end_ts": 1779224845.8015018,
+      "duration_s": 19.557,
       "cache_hit": false,
       "sub_agent_id": null,
       "retry_count": 0,
@@ -53,41 +53,41 @@
       "error": null,
       "extra": {
         "plan_source": "scene_planner:llm",
-        "estimated_duration_s": 45.5,
+        "estimated_duration_s": 45.0,
         "scene_count": 12
       }
     },
     {
       "stage_id": "script",
-      "start_ts": 1779223635.6382704,
-      "end_ts": 1779223641.9645517,
-      "duration_s": 6.326,
+      "start_ts": 1779224845.8016617,
+      "end_ts": 1779224850.4391546,
+      "duration_s": 4.637,
       "cache_hit": false,
       "sub_agent_id": null,
       "retry_count": 0,
-      "output_size_bytes": 1095,
+      "output_size_bytes": 1020,
       "fallback_chain_walked": [],
       "error": null,
       "extra": {
-        "word_count": 192,
+        "word_count": 176,
         "scene_aware": true
       }
     },
     {
       "stage_id": "tts",
-      "start_ts": 1779223641.9647794,
-      "end_ts": 1779223694.5672488,
-      "duration_s": 52.602,
+      "start_ts": 1779224850.4393625,
+      "end_ts": 1779224873.7251723,
+      "duration_s": 23.286,
       "cache_hit": false,
       "sub_agent_id": null,
       "retry_count": 0,
-      "output_size_bytes": 2955860,
+      "output_size_bytes": 2541874,
       "fallback_chain_walked": [
         {
           "provider": "gemini",
           "ok": true,
           "voice": "Aoede",
-          "bytes": 2955860,
+          "bytes": 2541874,
           "speed": 1.0,
           "atempo": 1.08,
           "atempo_meta": {},
@@ -103,119 +103,119 @@
     },
     {
       "stage_id": "loudnorm",
-      "start_ts": 1779223694.5676668,
-      "end_ts": 1779223696.8995574,
-      "duration_s": 2.332,
+      "start_ts": 1779224873.7254484,
+      "end_ts": 1779224875.5590715,
+      "duration_s": 1.834,
       "cache_hit": false,
       "sub_agent_id": null,
       "retry_count": 0,
-      "output_size_bytes": 5911642,
+      "output_size_bytes": 5083670,
       "fallback_chain_walked": [],
       "error": null,
       "extra": {
         "ok": true,
         "fallback_used": false,
         "target_lufs": -14.0,
-        "measured_in_i": "-17.95",
-        "measured_in_tp": "-0.72",
-        "measured_out_lufs": -14.3
+        "measured_in_i": "-19.96",
+        "measured_in_tp": "-1.82",
+        "measured_out_lufs": -14.2
       }
     },
     {
       "stage_id": "walkthrough",
-      "start_ts": 1779223696.8999808,
-      "end_ts": 1779223780.3459475,
-      "duration_s": 83.446,
+      "start_ts": 1779224875.5594645,
+      "end_ts": 1779224959.9567883,
+      "duration_s": 84.397,
       "cache_hit": false,
       "sub_agent_id": null,
       "retry_count": 0,
-      "output_size_bytes": 915948,
+      "output_size_bytes": 1619493,
       "fallback_chain_walked": [],
       "error": null,
       "extra": {
         "scenes": [
           {
-            "name": "land on visualizer",
+            "name": "Land on visualizer",
             "start_s": 0.0,
             "end_s": 4.0,
-            "note": "Let the viewer take in the dark stage, centered title, and the control bar with modes, palettes, aspect ratios, export buttons, and mic input."
+            "note": "Hold on the default Bars mode and dark stage so the viewer orients to the product layout."
           },
           {
-            "name": "start live input",
+            "name": "Switch to Wave mode",
             "start_s": 4.0,
-            "end_s": 8.0,
-            "note": "Enable microphone input to bring the visualizer to life without relying on a file picker."
+            "end_s": 7.5,
+            "note": "Start the journey by showing that visual modes are instantly switchable."
           },
           {
-            "name": "observe mic activation",
-            "start_s": 8.0,
-            "end_s": 12.0,
-            "note": "Notice the canvas begin reacting and the interface shift from idle to live audio visualization."
+            "name": "Observe wave mode",
+            "start_s": 7.5,
+            "end_s": 11.5,
+            "note": "Notice the active mode changes while the large canvas remains the focus."
           },
           {
-            "name": "switch to radial mode",
-            "start_s": 12.0,
-            "end_s": 15.5,
-            "note": "Move from the default Bars view into a more dramatic circular composition."
+            "name": "Switch to Spectrogram",
+            "start_s": 11.5,
+            "end_s": 15.0,
+            "note": "Show a second mode to communicate range across the seven visualizers."
           },
           {
-            "name": "observe radial motion",
-            "start_s": 15.5,
-            "end_s": 19.5,
-            "note": "Notice how the visual response wraps around the center and feels more immersive."
+            "name": "Observe spectrogram option",
+            "start_s": 15.0,
+            "end_s": 19.0,
+            "note": "Notice how the mode bar makes rapid experimentation easy."
           },
           {
-            "name": "change palette",
-            "start_s": 19.5,
-            "end_s": 23.0,
-            "note": "Switch to another palette to show the instant color transformation across the active visualization."
+            "name": "Switch to Radial",
+            "start_s": 19.0,
+            "end_s": 22.5,
+            "note": "Move into a more stylized layout to vary the visual rhythm of the demo."
           },
           {
-            "name": "observe palette transition",
-            "start_s": 23.0,
-            "end_s": 27.0,
-            "note": "Notice the smooth palette lerp rather than a harsh color cut."
+            "name": "Observe radial mode",
+            "start_s": 22.5,
+            "end_s": 26.5,
+            "note": "Notice the one-click mode switching without leaving the main stage."
           },
           {
-            "name": "switch to portrait export ratio",
-            "start_s": 27.0,
-            "end_s": 30.5,
-            "note": "Change the canvas framing to 9:16 to demonstrate social-ready composition."
+            "name": "Change palette",
+            "start_s": 26.5,
+            "end_s": 30.0,
+            "note": "Demonstrate palette personalization using one of the visible color chips."
           },
           {
-            "name": "observe 9:16 framing",
-            "start_s": 30.5,
-            "end_s": 34.5,
-            "note": "Notice the stage recompose into a tall portrait layout suitable for loops and short-form video."
+            "name": "Observe palette transition",
+            "start_s": 30.0,
+            "end_s": 34.0,
+            "note": "Notice the color theme change across the interface and canvas area."
           },
           {
-            "name": "open particles mode",
-            "start_s": 34.5,
-            "end_s": 38.0,
-            "note": "Show a second visual style with more motion and texture."
+            "name": "Switch aspect to square",
+            "start_s": 34.0,
+            "end_s": 37.5,
+            "note": "Show that the stage can be reframed for different output formats."
           },
           {
-            "name": "observe particles detail",
-            "start_s": 38.0,
-            "end_s": 42.0,
-            "note": "Notice the denser, more atmospheric particle behavior reacting to incoming sound."
+            "name": "Observe square framing",
+            "start_s": 37.5,
+            "end_s": 41.5,
+            "note": "Notice the aspect-ratio controls reshape the canvas presentation instantly."
           },
           {
-            "name": "adjust response sensitivity",
-            "start_s": 42.0,
-            "end_s": 45.72,
-            "note": "Increase the response smoothing control to demonstrate tuning how quickly the motion settles."
+            "name": "Switch aspect to vertical",
+            "start_s": 41.5,
+            "end_s": 45.0,
+            "note": "Highlight the mobile-first export format mentioned in the product description."
           }
         ],
         "plan_source": "cached:edit/scenes.json",
-        "walkthrough_duration_s": 55.12
+        "walkthrough_duration_s": 88.68
       }
     },
     {
       "stage_id": "stuck_frame",
-      "start_ts": 1779223780.3462026,
-      "end_ts": 1779223784.1641252,
-      "duration_s": 3.818,
+      "start_ts": 1779224959.9571054,
+      "end_ts": 1779224965.551499,
+      "duration_s": 5.594,
       "cache_hit": false,
       "sub_agent_id": null,
       "retry_count": 0,
@@ -223,9 +223,9 @@
       "fallback_chain_walked": [],
       "error": null,
       "extra": {
-        "sampled_frames": 55,
-        "largest_cluster_size": 39,
-        "largest_cluster_pct": 0.709,
+        "sampled_frames": 89,
+        "largest_cluster_size": 76,
+        "largest_cluster_pct": 0.854,
         "distinct_clusters": 2,
         "threshold": 1.0,
         "hash_distance": 8,
@@ -235,59 +235,56 @@
     },
     {
       "stage_id": "align",
-      "start_ts": 1779223784.1645954,
-      "end_ts": 1779223789.5242603,
-      "duration_s": 5.36,
+      "start_ts": 1779224965.55197,
+      "end_ts": 1779224969.0587409,
+      "duration_s": 3.507,
       "cache_hit": false,
       "sub_agent_id": null,
       "retry_count": 0,
-      "output_size_bytes": 21833,
+      "output_size_bytes": 20079,
       "fallback_chain_walked": [],
       "error": null,
       "extra": {
-        "audio_dur_s": 61.57,
-        "asr_word_count": 194,
-        "script_word_count": 192,
+        "audio_dur_s": 52.95,
+        "asr_word_count": 179,
+        "script_word_count": 176,
         "alignment_drift_s": 0.0,
         "fallback_used": false,
-        "speech_onset_s": 0.239,
-        "onset_offset_applied_s": 0.239,
-        "nw_matches": 157,
-        "nw_match_rate": 0.818,
+        "speech_onset_s": 0.252,
+        "onset_offset_applied_s": 0.252,
+        "nw_matches": 140,
+        "nw_match_rate": 0.795,
         "json_path": "/home/eve/projects/nightly-mvps/2026-05-19-visualizer/edit/transcripts/voiceover.json"
       }
     },
     {
       "stage_id": "assemble",
-      "start_ts": 1779223789.524608,
-      "end_ts": 1779223820.841095,
-      "duration_s": 31.316,
+      "start_ts": 1779224969.0611181,
+      "end_ts": 1779224994.9164743,
+      "duration_s": 25.855,
       "cache_hit": false,
       "sub_agent_id": null,
       "retry_count": 0,
-      "output_size_bytes": 2772508,
+      "output_size_bytes": 2587026,
       "fallback_chain_walked": [],
       "error": null,
       "extra": {
-        "srt_cues": 49,
+        "srt_cues": 42,
         "srt_canonicalizations": 0,
-        "srt_overlap_clips": 27,
-        "srt_min_duration_stretches": 47,
+        "srt_overlap_clips": 25,
+        "srt_min_duration_stretches": 40,
         "tail_strategy": "hold",
-        "voice_dur": 61.57,
-        "walkthrough_dur": 55.1,
-        "tail_gap_s": 6.47,
-        "held_frame_path": "/home/eve/projects/nightly-mvps/2026-05-19-visualizer/edit/_last_frame.png",
-        "concat_method": "demuxer_copy",
-        "walkthrough_fps": 25.0,
-        "effective_target_dur": 61.57
+        "voice_dur": 52.95,
+        "walkthrough_dur": 88.67,
+        "tail_gap_s": 0.0,
+        "held_frame_path": null
       }
     },
     {
       "stage_id": "assertions",
-      "start_ts": 1779223820.8416612,
-      "end_ts": 1779223826.1941414,
-      "duration_s": 5.352,
+      "start_ts": 1779224994.917064,
+      "end_ts": 1779225000.8868937,
+      "duration_s": 5.97,
       "cache_hit": false,
       "sub_agent_id": null,
       "retry_count": 0,
@@ -296,23 +293,23 @@
       "error": null,
       "extra": {
         "demo_path": "/home/eve/projects/nightly-mvps/2026-05-19-visualizer/edit/demo.mp4",
-        "demo_size_bytes": 2772508,
-        "demo_duration_s": 61.54,
-        "voice_duration_s": 61.57,
-        "srt_cue_count": 49,
-        "first_cue_start_s": 0.239,
-        "last_cue_end_s": 61.57,
-        "cue_drift_s": 0.0,
-        "min_cue_duration_s": 0.26,
-        "max_cue_duration_s": 1.92,
-        "integrated_lufs": -14.4,
+        "demo_size_bytes": 2587026,
+        "demo_duration_s": 52.92,
+        "voice_duration_s": 52.95,
+        "srt_cue_count": 42,
+        "first_cue_start_s": 0.252,
+        "last_cue_end_s": 53.052,
+        "cue_drift_s": 0.102,
+        "min_cue_duration_s": 0.2,
+        "max_cue_duration_s": 2.2,
+        "integrated_lufs": -14.3,
         "passed": true
       }
     },
     {
       "stage_id": "output",
-      "start_ts": 1779223826.194836,
-      "end_ts": 1779223826.198643,
+      "start_ts": 1779225000.887347,
+      "end_ts": 1779225000.890938,
       "duration_s": 0.004,
       "cache_hit": false,
       "sub_agent_id": null,
@@ -321,10 +318,10 @@
       "fallback_chain_walked": [],
       "error": null,
       "extra": {
-        "shared_versioned_path": "/home/eve/workspaces/shared/images/mvp/2026-05-19-visualizer/demo-20260519T204653.mp4",
+        "shared_versioned_path": "/home/eve/workspaces/shared/images/mvp/2026-05-19-visualizer/demo-20260519T210659.mp4",
         "shared_latest_path": "/home/eve/workspaces/shared/images/mvp/2026-05-19-visualizer/demo.mp4",
-        "demo_video_url": "https://mvp.trollefsen.com/media/mvp/2026-05-19-visualizer/demo-20260519T204653.mp4",
-        "run_id": "20260519T204653"
+        "demo_video_url": "https://mvp.trollefsen.com/media/mvp/2026-05-19-visualizer/demo-20260519T210659.mp4",
+        "run_id": "20260519T210659"
       }
     }
   ]
