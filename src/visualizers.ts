@@ -61,12 +61,24 @@ export function drawBars(rc: RenderContext) {
     // Log-spaced frequency grouping — each bar covers a constant ratio of the spectrum.
     const hz0 = F_LO * Math.pow(ratio, i / numBars);
     const hz1 = F_LO * Math.pow(ratio, (i + 1) / numBars);
-    const bin0 = Math.max(1, Math.floor(hz0 / binHz)); // skip bin 0 (DC garbage)
-    const bin1 = Math.min(bins.length, Math.max(bin0 + 1, Math.ceil(hz1 / binHz)));
-    // MAX (not average) across the bin range — average washes out transients in wide-spanning bars.
-    let max = 0;
-    for (let b = bin0; b < bin1; b++) if (bins[b] > max) max = bins[b];
-    const amp = max / 255;
+    const hzMid = Math.sqrt(hz0 * hz1); // geometric mean — log-space centre
+    const bin0 = Math.max(1, Math.floor(hz0 / binHz));
+    const bin1 = Math.min(bins.length, Math.ceil(hz1 / binHz));
+    // If the bar spans 2+ bins, take MAX (preserves transients in wide treble bars).
+    // If it spans <=1 bin, INTERPOLATE between adjacent bins at the bar's centre freq
+    // — fixes the low-end staircase where many bars share the same bin.
+    let amp: number;
+    if (bin1 - bin0 >= 2) {
+      let max = 0;
+      for (let b = bin0; b < bin1; b++) if (bins[b] > max) max = bins[b];
+      amp = max / 255;
+    } else {
+      const fbin = hzMid / binHz;
+      const lo = Math.max(1, Math.min(bins.length - 1, Math.floor(fbin)));
+      const hi = Math.min(bins.length - 1, lo + 1);
+      const t = Math.max(0, Math.min(1, fbin - lo));
+      amp = (bins[lo] * (1 - t) + bins[hi] * t) / 255;
+    }
     const mul = bandMultiplier((hz0 + hz1) / 2, rc.bandScale);
     const hh = Math.pow(amp, 0.9) * mul * h * 0.78;
 

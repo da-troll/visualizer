@@ -28,8 +28,10 @@ const DISPLAY_MAX_DB = -25;
 // Bass onset thresholds — bins 3..9 cover ~64–215 Hz at 44.1 kHz / fftSize 2048.
 const BASS_BIN_LO = 3;
 const BASS_BIN_HI = 10;
-const BASS_ENERGY_TRIG = 0.55;
-const BASS_RISE_TRIG = 0.12;
+const BASS_ENERGY_FLOOR = 0.35;       // absolute floor — silence baseline
+const BASS_RISE_TRIG = 0.08;          // minimum jump for an onset
+const ADAPTIVE_RATIO = 0.6;           // threshold = rollingMax * 0.6
+const ADAPTIVE_WINDOW = 200;          // ~3.3 s at 60 fps
 const REFRACTORY_MS = 250;
 
 export class AudioEngine {
@@ -51,6 +53,7 @@ export class AudioEngine {
   // Bass-onset beat detector state
   private prevBassEnergy = 0;
   private refractoryUntil = 0;
+  private bassHistory: number[] = []; // rolling window for adaptive threshold
   private bpmBeatTimes: number[] = [];
   private bpmEstimate = 0;
 
@@ -142,6 +145,7 @@ export class AudioEngine {
     this.playing = false;
     this.prevBassEnergy = 0;
     this.refractoryUntil = 0;
+    this.bassHistory = [];
     this.bpmBeatTimes = [];
     this.bpmEstimate = 0;
   }
@@ -170,8 +174,17 @@ export class AudioEngine {
     const bassRise = bassEnergy - this.prevBassEnergy;
     this.prevBassEnergy = bassEnergy;
 
+    // Adaptive threshold: rolling max × ratio, with absolute floor so silence doesn't trigger.
+    this.bassHistory.push(bassEnergy);
+    if (this.bassHistory.length > ADAPTIVE_WINDOW) this.bassHistory.shift();
+    let rollingMax = 0;
+    for (let i = 0; i < this.bassHistory.length; i++) {
+      if (this.bassHistory[i] > rollingMax) rollingMax = this.bassHistory[i];
+    }
+    const energyThreshold = Math.max(BASS_ENERGY_FLOOR, rollingMax * ADAPTIVE_RATIO);
+
     let beat = false;
-    if (this.playing && bassEnergy > BASS_ENERGY_TRIG && bassRise > BASS_RISE_TRIG && now > this.refractoryUntil) {
+    if (this.playing && bassEnergy > energyThreshold && bassRise > BASS_RISE_TRIG && now > this.refractoryUntil) {
       beat = true;
       this.refractoryUntil = now + REFRACTORY_MS;
       this.bpmBeatTimes.push(now);

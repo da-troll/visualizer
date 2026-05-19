@@ -429,7 +429,7 @@ function App() {
           )}
           {inputType !== 'idle' && (
             <div className="bpm-badge">
-              <div className="big">{bpm > 0 ? bpm.toFixed(0) : '—'}</div>
+              <div className="big">{bpm >= 60 && bpm <= 200 ? bpm.toFixed(0) : '—'}</div>
               <div className="label">BPM</div>
             </div>
           )}
