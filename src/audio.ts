@@ -23,7 +23,7 @@ export interface AudioFrame {
 
 const FFT_SIZE = 2048;             // 21.5 Hz bins at 44.1 kHz
 const DISPLAY_SMOOTHING = 0.8;
-const DISPLAY_MIN_DB = -85;
+const DISPLAY_MIN_DB = -90;   // extended floor — treble is typically quieter per-bin than bass
 const DISPLAY_MAX_DB = -25;
 // Bass onset thresholds — bins 3..9 cover ~64–215 Hz at 44.1 kHz / fftSize 2048.
 const BASS_BIN_LO = 3;

@@ -50,7 +50,7 @@ export function drawBars(rc: RenderContext) {
   const binHz = nyquist / bins.length;
   const numBars = 64;
   const F_LO = 30;
-  const F_HI = Math.min(16000, nyquist);
+  const F_HI = Math.min(20000, nyquist); // full audible range
   const ratio = F_HI / F_LO;
   const barWPad = w * 0.05;
   const usableW = w - barWPad * 2;
