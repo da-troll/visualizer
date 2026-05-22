@@ -1,5 +1,5 @@
 {
-  "project_name": "Visualizer",
+  "project_name": "Visual Flux",
   "description": "Standalone web audio visualizer — drop in a track or open the mic and watch it move across seven canvas2D modes with beat-reactive palettes, BPM display, and a one-click 9:16 WebM loop export.",
   "tech_stack": [
     "React",
@@ -23,7 +23,7 @@
     "Shareable permalink encodes mode + palette + aspect + bands into URL hash"
   ],
   "live_url": "https://mvp.trollefsen.com/2026-05-19-visualizer/",
-  "github_url": "https://github.com/da-troll/visualizer",
+  "github_url": "https://github.com/da-troll/visual-flux",
   "visibility": "public",
   "inspired_by": "household/visualizer",
   "quality_bounds": {

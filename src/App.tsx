@@ -315,7 +315,7 @@ function App() {
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `visualizer-${ts}.png`;
+      a.download = `visual-flux-${ts}.png`;
       a.click();
       setTimeout(() => URL.revokeObjectURL(url), 1000);
     }, 'image/png');
@@ -380,7 +380,7 @@ function App() {
       const ts = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `visualizer-loop-${ts}.webm`;
+      a.download = `visual-flux-loop-${ts}.webm`;
       a.click();
       setTimeout(() => URL.revokeObjectURL(url), 2000);
       setRecordingProgress(null);
@@ -435,7 +435,7 @@ function App() {
           )}
           {inputType === 'idle' && (
             <div className="dropzone-hint">
-              <h1>Visualizer</h1>
+              <h1>Visual Flux</h1>
               <p>Drag an audio file anywhere · or <span className="accent">click ↓ Load</span></p>
               <p style={{ marginTop: 8, fontSize: 11 }}>or use the microphone</p>
             </div>
